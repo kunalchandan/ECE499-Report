@@ -1,0 +1,126 @@
+% !TeX root = main.tex
+\documentclass{article}
+%% Useful packages
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{crop,graphicx,amsmath,array,color,amssymb,fancyhdr,lineno}
+\usepackage{flushend,stfloats,amsthm,chngpage,times,lastpage,siunitx}
+\usepackage{calc,listings,color,wrapfig,tabularx,longtable,enumitem}
+% Minipage nonsense
+\usepackage{framed}
+\usepackage{etoolbox}
+\usepackage{hyperref}
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{Refs.bib}
+\usepackage{lineno}
+%% Custom Commands
+
+% Roman numerals \rom{2} = II
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+% microLED
+\newcommand{\uled}{$\mu$LED}
+\newcommand{\uleds}{$\mu$LEDs}
+
+
+\makeatletter
+%% Minipage
+% #1 Name
+% #2 Indent
+% #3 Beforeskip
+% #4 Afterskip
+% #5 Style
+% #6 Heading
+\newcommand*{\@mpstartsection}[6]{%
+  \if@noskipsec \leavevmode \fi
+  \par
+  \@tempskipa #3\relax
+  \@afterindenttrue
+  \ifdim \@tempskipa <\z@
+    \@tempskipa -\@tempskipa \@afterindentfalse
+  \fi
+  \if@nobreak
+    \everypar{}%
+  \else
+    \addvspace\@tempskipa
+  \fi
+  \refstepcounter{cont@#1}% this counter is never reset, used for hyperref
+  \stepcounter{#1}% counter used for display purposes
+  \protected@edef\@currentlabel{% define how refs look
+    \csname p@#1\endcsname \csname the#1\endcsname
+  }%
+  \protected@edef\@svsec{\@seccntformat{#1}\relax}%
+  \begingroup
+    #5{\@hangfrom{\hskip #2\relax\@svsec}#6\@@par}%
+  \endgroup
+  \par
+  \vskip #4\relax
+  % \@afterheading deals with penalities related to page breaking that aren't
+  % needed inside a minipage, but it also honors the \if@afterindent switch,
+  % therefore leave it here.
+  \@afterheading
+  \ignorespaces
+}
+
+\newcounter{mpsection}
+\newcounter{mpsubsection}[mpsection]
+\newcounter{cont@mpsection}
+\newcounter{cont@mpsubsection}
+\renewcommand\thempsection{\@arabic\c@mpsection}
+\renewcommand\thempsubsection{\thempsection.\@arabic\c@mpsubsection}
+\AtBeginEnvironment{minipage}{%
+  \setcounter{mpsection}{0}%
+}
+\newcommand\mpsection{\@mpstartsection{mpsection}{\z@}{-3.5ex \@plus -1ex \@minus -.2ex}{2.3ex \@plus.2ex}{\normalfont\normalsize\bfseries}}
+\newcommand\mpsubsection{\@mpstartsection{mpsubsection}{\z@}{-3.25ex \@plus -1ex \@minus -.2ex}{1.5ex \@plus .2ex}{\normalfont\normalsize\itshape}}
+
+
+
+%%%%%%%%%%%%   Header and Footer  %%%%%%%%%%%%%
+\pagestyle{fancy}
+\fancypagestyle{plain}{%
+  \renewcommand{\headrulewidth}{0pt}%
+  \fancyhf{}%
+}
+
+\title{%
+  Advanced Packaging for \uled s using Indium Electroplating \\
+  \large In Fulfillment of ECE 499 Course Requirement}
+\author{Kunal Chandan}
+
+\begin{document}
+\input{Title/title.tex}
+
+
+\fancyhf{}
+\fancyhead[L]{Kunal Chandan}
+\fancyhead[R]{}
+\fancyfoot[R]{ \bf\thepage\ \rm }%
+\pagenumbering{gobble}
+
+\input{Title/Abstract.tex}
+\input{Title/Acknowledgement.tex}
+
+\newpage
+\tableofcontents
+\listoffigures
+\listoftables
+
+\include{Nomenclature.tex}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\input{Main/Introduction.tex}
+\input{Main/Ch1_Indium_EP.tex}
+\input{Main/Ch2_Phase1-Uniform_Bonding.tex}
+\input{Main/Ch3_Phase2-Electrical_Connection.tex}
+\input{Main/Ch4_Phase3-Bonding_to_LEDs.tex}
+\input{Addendum/Addendum.tex}
+
+\pagebreak
+\printbibliography
+\pagebreak
+\input{Appendix/Appendix.tex}
+
+\end{document}

@@ -1,0 +1,109 @@
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=MATLAB,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\begin{lstlisting}
+%% Define Constants
+BP_width   = 6.2 * 10^-3; % m
+BP_length  = 6.2 * 10^-3; % m
+BP_thickness = 500 * 10^-6; % m
+
+LED_width  = 4.5 * 10^-3; % m
+LED_length = 4.5 * 10^-3; % m
+LED_thickness = 500 * 10^-6; % m
+
+% http://www.roditi.com/SingleCrystal/Sapphire/Properties.html
+SAPPHIRE_THERMAL_CONDUCTIVITY = 25.12; % W / m*K
+SAPPHIRE_MASS_DENSITY = 3980; % kg / m^3
+SAPPHIRE_SPECIFIC_HEAT = 750; % J / kg * K
+
+AMBIENT_TEMPERATURE = 273.15 + 22; % K
+HOTPLATE_TEMPERATURE = 273.15 + 250; % K
+CONVECTION_COEFFICIENT_AIR = 5; % Unitless nominal 1-5 
+% https://www.engineeringtoolbox.com/emissivity-coefficients-d_447.html
+EMISSIVITY_COEFFICIENT_SAPPHIRE = 0.8;
+
+%% Define 2D geometry
+pderect([(-BP_width/2) (BP_width/2) (-BP_length/2) (BP_length/2)], 'BP')
+pderect([(-LED_width/2) (LED_width/2) (-LED_length/2) (LED_length/2)], 'LED')
+%% Export the geometry description matrix, set formula, and name-space matrix into the MATLAB workspace by selecting 
+%%%%%%%% Draw > Export Geometry Description, Set Formula, Labels. 
+% This data lets you reconstruct the geometry in the workspace.
+
+
+
+%% Start 3D geometry
+g = decsg(gd,sf,ns);
+pdegplot(g,"FaceLabels","on")
+model = createpde("thermal","transient");
+g = geometryFromEdges(model, g)
+% Extrude BP
+g = extrude(g, BP_thickness);
+% Plot
+f = figure('Name', 'Geometry');
+pdegplot(g,"FaceLabels","on")
+view([45 45])
+
+%% Extrude LED
+g = extrude(g, 4, LED_thickness);
+close(f)
+f = figure('Name', 'Geometry');
+pdegplot(g,"FaceLabels","on")
+view([45 45])
+
+%% Assign geometry to thermal model
+model.Geometry = g;
+close(f)
+f = figure('Name', 'Geometry');
+pdegplot(g)
+
+
+%% Setup Thermal model
+thermalProperties(model, ...
+    "ThermalConductivity", SAPPHIRE_THERMAL_CONDUCTIVITY, ...
+    "MassDensity", SAPPHIRE_MASS_DENSITY, ...
+    "SpecificHeat", SAPPHIRE_SPECIFIC_HEAT)
+model.StefanBoltzmannConstant = 5.670367e-8;
+
+% Apply heat to the bottom 2 faces
+thermalBC(model,"Face", [1 2] ,"Temperature", HOTPLATE_TEMPERATURE);
+thermalBC(model,"Face", 3:g.NumFaces, ...
+                "ConvectionCoefficient", CONVECTION_COEFFICIENT_AIR, ...
+                "AmbientTemperature", AMBIENT_TEMPERATURE, ...
+                "Emissivity",EMISSIVITY_COEFFICIENT_SAPPHIRE);
+
+thermalIC(model,AMBIENT_TEMPERATURE);
+
+generateMesh(model);
+
+%% Perform computation for transient thermal analysis
+results = solve(model,0:.01:0.3);
+%% Plot
+for i = 1:length(results.SolutionTimes)
+  f = figure(i+5);
+  pdeplot3D(model,"ColorMapData",results.Temperature(:,i))
+  % clim([AMBIENT_TEMPERATURE HOTPLATE_TEMPERATURE])
+  title({['Time = ' num2str(results.SolutionTimes(i)) 's']})
+  saveas(f, [num2str(i, '%03.f') '.png']);
+end
+
+
+
+
+\end{lstlisting}
