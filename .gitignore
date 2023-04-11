@@ -10,5 +10,6 @@
 *.gz
 *.out
 *.toc
+*.xdv
 *.xml
 
