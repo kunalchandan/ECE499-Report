@@ -1,0 +1,73 @@
+
+%% Custom Commands
+
+% Roman numerals \rom{2} = II
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+% microLED
+\newcommand{\uled}{$\mu$LED}
+\newcommand{\uleds}{$\mu$LEDs}
+
+% Units
+\newcommand{\umm}{\unit{\mu\meter\squared}}
+\newcommand{\um}{\unit{\micro\meter}}
+\newcommand{\mm}{\unit{\milli\meter}}
+\newcommand{\sqmm}{\unit{\square\milli\meter}}
+\newcommand{\junits}{ \unit{\milli\ampere\per\square\milli\meter}}
+
+
+
+\makeatletter
+%% Minipage
+% #1 Name
+% #2 Indent
+% #3 Beforeskip
+% #4 Afterskip
+% #5 Style
+% #6 Heading
+\newcommand*{\@mpstartsection}[6]{%
+  \if@noskipsec \leavevmode \fi
+  \par
+  \@tempskipa #3\relax
+  \@afterindenttrue
+  \ifdim \@tempskipa <\z@
+    \@tempskipa -\@tempskipa \@afterindentfalse
+  \fi
+  \if@nobreak
+    \everypar{}%
+  \else
+    \addvspace\@tempskipa
+  \fi
+  \refstepcounter{cont@#1}% this counter is never reset, used for hyperref
+  \stepcounter{#1}% counter used for display purposes
+  \protected@edef\@currentlabel{% define how refs look
+    \csname p@#1\endcsname \csname the#1\endcsname
+  }%
+  \protected@edef\@svsec{\@seccntformat{#1}\relax}%
+  \begingroup
+    #5{\@hangfrom{\hskip #2\relax\@svsec}#6\@@par}%
+  \endgroup
+  \par
+  \vskip #4\relax
+  % \@afterheading deals with penalities related to page breaking that aren't
+  % needed inside a minipage, but it also honors the \if@afterindent switch,
+  % therefore leave it here.
+  \@afterheading
+  \ignorespaces
+}
+
+\newcounter{mpsection}
+\newcounter{mpsubsection}[mpsection]
+\newcounter{cont@mpsection}
+\newcounter{cont@mpsubsection}
+\renewcommand\thempsection{\@arabic\c@mpsection}
+\renewcommand\thempsubsection{\thempsection.\@arabic\c@mpsubsection}
+\AtBeginEnvironment{minipage}{%
+  \setcounter{mpsection}{0}%
+}
+\newcommand\mpsection{\@mpstartsection{mpsection}{\z@}{-3.5ex \@plus -1ex \@minus -.2ex}{2.3ex \@plus.2ex}{\normalfont\normalsize\bfseries}}
+\newcommand\mpsubsection{\@mpstartsection{mpsubsection}{\z@}{-3.25ex \@plus -1ex \@minus -.2ex}{1.5ex \@plus .2ex}{\normalfont\normalsize\itshape}}
+
+
