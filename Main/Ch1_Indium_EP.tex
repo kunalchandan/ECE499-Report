@@ -10,10 +10,9 @@ CITE THE INDIUM CORPORATION AND THE ADDITIVES IN THEIR ELECTROPLATING SOLUTION
 
 IDENTIFY BENEFITS OF EACH CHEMICAL IN THE THING? IF POSSIBLE?
 
-Adapting the indium electroplating process to the E3-3139 and the resources available there, the process was as follows:
-\input{Main/Ch1/sop.tex}
+Adapting the indium electroplating process to the E3-3139 and the resources available there, the process is in \hyperref[sec:SOP]{Appendix A}.
 
-The process used here allows us to electroplate indium onto the substrate that is Chrome-Gold on Sapphire. Both chromium and gold are excellent materials for indium to easily electroplate onto.
+The process used there allows us to electroplate indium onto the substrate that is Chrome-Gold on Sapphire. Both chromium and gold are excellent materials for indium to easily electroplate onto.
 % TODO PROVIDE CITATION
 
 \newpage
@@ -36,7 +35,7 @@ With a current source, the current can be precisely controlled and maintained at
 \begin{wrapfigure}{R}{0.25\textwidth}
     \centering
     \includegraphics[width=0.25\textwidth]{Main/Ch1/Current Sample holder.png}
-    \caption{Line drawing of the aligator clip and sample }
+    \caption{Line drawing of the alligator clip and sample }
 \end{wrapfigure}
 
 Another advantage of using a current source is that it allows for better control over the plating process and reduces the risk of over-plating or under-plating. With a voltage source, the voltage applied to the system can cause the plating rate to fluctuate, which can result in uneven thickness or even damage to the substrate. In contrast, a current source ensures a constant and controlled deposition rate, which minimizes the risk of defects or damage to the substrate.
@@ -56,7 +55,7 @@ The glass rod is attached to the plastic piece and has the alligator clip on it.
 
 
 
-\subsection{Phsyiscal Problems with the setup}
+\subsection{Physical Problems with the setup}
 
 % TODO Replace with SI units instead of mA ...
 % TODO Replace derivative with derivative library maybe?
@@ -69,35 +68,78 @@ The function generator would allow for pulsed plating as recommended by the indi
 \subsection{Experimental Issues - Deviation from Theory}
 
 According to the Indium corporation docs, the recommended electroplating current density for plating is \dots
-Converting to SI units from ASME units we see that this yields a plating current of \dots . However in this analysis we have only considered the active plating area of the sample, and we have failed to consider the plating area of the exposed alligator clip that holds the sample.
+Converting to SI units from ASME units we see that this yields a plating current of \dots. However, in this analysis we have only considered the active plating area of the sample, and we have failed to consider the plating area of the exposed alligator clip that holds the sample.
 
 The extra exposed area guarantees an incorrect characterization of the plating growth proportional to the exposed area for the indium bumps. We can show this simply from the following
 
 \begin{equation}\tag{A}
     \begin{split}
-        V &= I R \\
-        I_{Plating} &= \frac{\text{Some fixed current}}{\text{Plating area}}  = J_{Plating} \times A_{Plating} \\
-        V_{Plating} &= \text{Variable to satisfy plating current} \\
-        R_{Total} &= R_{Anode} + R_{Plating Solution} + R_{Cathode} + R_{Wires} \\
-        I_{Plating} &= s
+        V &\doteq I R \\
+        I_{Plating} &\doteq J_{Plating} \times A_{Plating} \\
+        R_{Total} &\doteq R_{Anode} + R_{Plating Solution} + R_{Cathode} + R_{Wires} \\
+        V_{Plating} &\doteq \text{Variable to satisfy plating current}
+    \end{split}
+\end{equation}
+
+From the datasheets from Indium Corporation \cite{indiumCorpPlating} we see that the recommended plating current density.
+
+$$
+    J_{Plating} = 10-100 \unit{\ampere\per ft^2}
+$$
+
+Or in more elegant units:
+
+\begin{equation}\notag
+    \begin{split}
+        J_{Plating} &\approx 1.1\times10^{-7}-1.1\times10^{-6}
+        \unit{\milli\ampere\per\square\micro\meter} \\
+        &= 0.11-1.1 \junits
     \end{split}
 \end{equation}
 
 
+We can then solve for the plating current based on the exposed area given by the GDS file of the sample.
 
-HERE I WANT TO IDENTIFY THE PLATING GROWTH PPER SECOND AS A FUNCTION OF THE PLATING AREA
 
-DESIGN OF ALIGATOR CLIP WAS MESSING WITH OUR RESILTS
+\begin{wrapfigure}{R}{0.25\textwidth}
+    \centering
+    \includegraphics[width=0.25\textwidth]{Main/Ch1/GDS_V1.png}
+    \caption{GDS image of the layout. Indium is in green bumps have a diameter of 40 $\unit{\micro\meter}$}
+\end{wrapfigure}
 
-ACCOUNTINF FOR THE AREA OF THE ALIGATOR CLOP
 
-DERIVING THE ARE OF THE ALGATOR CLOP BASED ON EXPECTED PLATING GROWTH RATE
+The exposed area is thus:
+
+\begin{equation}\notag
+    \begin{split}
+        A_{Plating} &= \pi (20 \um)^2 + (4.5 \mm \times 3 \mm) \\
+        &\approx 13.5 \sqmm
+    \end{split}
+\end{equation}
+
+Thus, the plating current for a current density of $20\unit{\ampere\per ft^2}$ or $0.2153 \junits$ is:
+
+\begin{equation}\notag
+    \begin{split}
+        I_{Plating} &\doteq J_{Plating} \times A_{Plating} \\
+        I_{Plating} &= (0.2153 \junits) \times (13.5 \sqmm)
+    \end{split}
+\end{equation}
+
+
+HERE I WANT TO IDENTIFY THE PLATING GROWTH PER SECOND AS A FUNCTION OF THE PLATING AREA
+
+DESIGN OF ALLIGATOR CLIP WAS MESSING WITH OUR RESULTS
+
+ACCOUNTING FOR THE AREA OF THE ALLIGATOR CLOP
+
+DERIVING THE AREA OF THE ALLIGATOR CLOP BASED ON EXPECTED PLATING GROWTH RATE
 
 
 
 \subsection{Development of a Repeatable Process}
 
-TO DEVELOP A REPEATABLE PROCESS PICKING A DISTANCE AND ENSURING ALIGNEMENT
+TO DEVELOP A REPEATABLE PROCESS PICKING A DISTANCE AND ENSURING ALIGNMENT
 
-SELECTING A BETTER VOLTAGE SOURCE/CURRENT SOURCE MILLIVOLT CONTROL, RESOLUTION OF 0.02mA per milli Volt
+SELECTING A BETTER VOLTAGE SOURCE/CURRENT SOURCE MILLIVOLT CONTROL, RESOLUTION OF 0.02mA per mill Volt
 
