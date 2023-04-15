@@ -46,7 +46,8 @@ Using a voltage source with an ammeter can be equivalent to a current source in 
 \begin{wrapfigure}{L}{0.25\textwidth}
     \centering
     \includegraphics[width=0.25\textwidth]{Main/Ch1/Sample_holder.png}
-    \caption{3D Rendering of the sample holder}
+    \caption{\raggedright 3D Rendering of the sample holder}
+    \vspace{.2cm}
 \end{wrapfigure}
 
 The sample holder consists of two plastic blocks that are held together by two steel bars. Thumbscrews are used to lock the relative position of the plastic pieces in place while the assembly 'floats'  on the lip of the beaker the sample is submerged into. One of the two plastic pieces has a stopper that helps constrain the position of the assembly on the beaker while the other plastic piece holds the glass rod and alligator clip.
@@ -57,10 +58,9 @@ The glass rod is attached to the plastic piece and has the alligator clip on it.
 
 \subsection{Physical Problems with the setup}
 
-% TODO Replace with SI units instead of mA ...
 % TODO Replace derivative with derivative library maybe?
-The existing setup came with an analog voltage supply that was only able to provide analog control of the voltage based on two knobs (a fine and coarse). This control was only fine enough to $\pm 10mV$ where the derivative of the current with respect to voltage in the relevant regime was $\frac{d mA}{d mV} = \frac{0.3 mA}{1 mV}$.
-This meant there was poor resolution on the current control with the previous power-supply with a current resolution of $\pm 3 mA$ which would be an insufficient resolution for the small area that was being plated.
+The existing setup came with an analog voltage supply that was only able to provide analog control of the voltage based on two knobs (a fine and coarse). This control was only fine enough to $\pm 10 \mV$ where the derivative of the current with respect to voltage in the relevant regime was $\frac{d \mA}{d \mV} = \frac{0.3 \mA}{1 \mV}$.
+This meant there was poor resolution on the current control with the previous power-supply with a current resolution of $\pm 3 \mA$ which would be an insufficient resolution for the small area that was being plated.
 
 I replaced the existing voltage supply with a Tektronics function generator as it provided an appropriate resolution and dynamic range for such the task.
 The function generator would allow for pulsed plating as recommended by the indium corporation \cite{indiumCorpGrainStructure}
@@ -84,16 +84,14 @@ The extra exposed area guarantees an incorrect characterization of the plating g
 From the datasheets from Indium Corporation \cite{indiumCorpPlating} we see that the recommended plating current density.
 
 $$
-    J_{Plating} = 10-100 \unit{\ampere\per ft^2}
+    J_{Plating} = 10-100 \jufeet
 $$
 
 Or in more elegant units:
 
 \begin{equation}\notag
     \begin{split}
-        J_{Plating} &\approx 1.1\times10^{-7}-1.1\times10^{-6}
-        \unit{\milli\ampere\per\square\micro\meter} \\
-        &= 0.11-1.1 \junits
+        J_{Plating} &\approx 0.11-1.1 \junits
     \end{split}
 \end{equation}
 
@@ -104,7 +102,8 @@ We can then solve for the plating current based on the exposed area given by the
 \begin{wrapfigure}{R}{0.25\textwidth}
     \centering
     \includegraphics[width=0.25\textwidth]{Main/Ch1/GDS_V1.png}
-    \caption{GDS image of the layout. Indium is in green bumps have a diameter of 40 $\unit{\micro\meter}$}
+    \caption{GDS image of the layout. Indium is in green bumps have a diameter of 40 $\um$}
+    \vspace{.1cm}
 \end{wrapfigure}
 
 
@@ -117,14 +116,104 @@ The exposed area is thus:
     \end{split}
 \end{equation}
 
-Thus, the plating current for a current density of $20\unit{\ampere\per ft^2}$ or $0.2153 \junits$ is:
+Thus, the plating current for a current density of $20\jufeet$ or $0.2153 \junits$ which represents a growth rate of $1.5\mmph $ or $25 \umpm$ is as follows.
 
 \begin{equation}\notag
     \begin{split}
         I_{Plating} &\doteq J_{Plating} \times A_{Plating} \\
-        I_{Plating} &= (0.2153 \junits) \times (13.5 \sqmm)
+        I_{Plating} &= (0.2153 \junits) \times (13.5 \sqmm) \\
+        I_{Plating} &= 2.907 \mA
     \end{split}
 \end{equation}
+
+
+However, when we apply a voltage of $2.4 \mA$ for 5 minutes the growth we see in figure \ref{fig:24mAGrowth} that the growth is between $0.3-1.2 \um$ in thickness.
+
+
+From those results we can see that the estimate of area that we predicted we got $\frac{0.8}{25} \times 100\% = 3.2\%$ of the expected growth. While that is not explicitly a problem, the indium bumps and growth did not look very uniform or nearly thick enough compared to what would be needed in the proceeding steps.
+
+From here a number of more experiments were conducted and condensed results of the growth were compiled in the table \ref{table:platingGrowths}
+
+
+\begin{wrapfigure}{R}{\textwidth}
+    \centering
+    \includegraphics[width=0.4\textwidth]{Main/Ch1/24mA_Growth1.png}
+    \includegraphics[width=0.4\textwidth]{Main/Ch1/24mA_Growth2.png}
+    \caption{\raggedright SEM images of indium bumps for $2.4 \mA$ current for $5 \unit{\min}$}
+    \vspace{.2cm}
+    \label{fig:24mAGrowth}
+\end{wrapfigure}
+
+
+\begin{sidewaystable}
+    \centering
+    \begin{tabular}{| l | l | l | l | l |}
+        \hline
+        Sample Name & Electroplating Time ($\unit{\min}$)  & Electroplating Current ($\mA$) & Indium Thickness ($\um$) & Growth rate ($\unit{\micro\meter\per\min}$) \\
+        \hline
+        \hline
+        01-Caesar       &    5   &   2.4   &   1.1   &   0.22       \\
+        02-Augustus     &    5   &   2.4   &   0.4   &   0.08       \\
+        03-Tiberius     &    10  &   2.4   &   1.3   &   0.13       \\
+        04-Caligula     &    5   &   4.8   &   1     &   0.2        \\
+        05-Claudius     &    10  &   4.8   &   1.3   &   0.13       \\
+        06-Nero         &    10  &   9.6   &   1.7   &   0.17       \\
+        07-Galba        &    5   &   50    &   5     &   1          \\
+        08-Otho         &    5   &   100   &   14    &   2.8        \\
+        09-Vitellius    &    5   &   20    &   8.4   &   1.68       \\
+        10-Vespasian    &    5   &   30    &   8.3   &   1.66       \\
+        11-Titus        &    5   &   40    &   8.5   &   1.7        \\
+        12-Domitian     &    5   &   60    &   10    &   2          \\
+        13-Nerva        &    5   &   20    &   7.6   &   1.52       \\
+        14-Trajan       &    5   &   20    &   5.6   &   1.12       \\
+        15-Hadrian      &    5   &   20    &   4     &   0.8        \\
+        16-Pius         &    5   &   20    &   4     &   0.8 \\
+        \hline
+        \hline
+    \end{tabular}
+    \caption{Table of condensed results of Phase 1 plating experiments}
+    \label{table:platingGrowths}
+\end{sidewaystable}
+
+
+\begin{wrapfigure}{R}{0.6\textwidth}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel=Electroplating Current ($\mA$),
+            ylabel=Growth rate ($\unit{\micro\meter\per\min}$),
+            legend pos=north west,
+            scatter/classes={
+                a={mark=triangle*,purple4},
+                b={mark=triangle*,red}
+            }
+        ]
+            \addplot[scatter,only marks,
+            scatter src=explicit symbolic]
+            coordinates {
+                (2.4,0.22) [a]
+                (2.4,0.08) [a]
+                (2.4,0.13) [a]
+                (4.8,0.2 ) [a]
+                (4.8,0.13) [a]
+                (9.6,0.17) [a]
+                (50 ,1   ) [a]
+                (100,2.8 ) [a]
+                (20 ,1.68) [a]
+                (30 ,1.66) [a]
+                (40 ,1.7 ) [a]
+                (60 ,2   ) [a]
+                (20 ,1.52) [a]
+                (20 ,1.12) [a]
+                (20 ,0.8 ) [a]
+                (20 ,0.8 ) [a]
+            };
+            \legend{Collected Growth Results}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{A scatter plot of current vs voltage.}
+    \label{fig:scatterplot}
+\end{wrapfigure}
 
 
 HERE I WANT TO IDENTIFY THE PLATING GROWTH PER SECOND AS A FUNCTION OF THE PLATING AREA

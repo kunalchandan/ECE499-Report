@@ -1,5 +1,9 @@
 
 %% Custom Commands
+\definecolor{purple1}{RGB}{208, 180, 239}
+\definecolor{purple2}{RGB}{190, 051, 218}
+\definecolor{purple3}{RGB}{129, 000, 180}
+\definecolor{purple4}{RGB}{087, 005, 139}
 
 % Roman numerals \rom{2} = II
 \makeatletter
@@ -11,11 +15,17 @@
 \newcommand{\uleds}{$\mu$LEDs}
 
 % Units
-\newcommand{\umm}{\unit{\mu\meter\squared}}
-\newcommand{\um}{\unit{\micro\meter}}
-\newcommand{\mm}{\unit{\milli\meter}}
-\newcommand{\sqmm}{\unit{\square\milli\meter}}
-\newcommand{\junits}{ \unit{\milli\ampere\per\square\milli\meter}}
+\newcommand{\umm}   {\unit[per-mode=fraction]{\mu\meter\squared}}
+\newcommand{\um}    {\unit[per-mode=fraction]{\micro\meter}}
+\newcommand{\mm}    {\unit[per-mode=fraction]{\milli\meter}}
+\newcommand{\mA}    {\unit[per-mode=fraction]{\milli\ampere}}
+\newcommand{\mV}    {\unit[per-mode=fraction]{\milli\volt}}
+\newcommand{\sqmm}  {\unit[per-mode=fraction]{\square\milli\meter}}
+\newcommand{\junits}{\unit[per-mode=fraction]{\milli\ampere\per\square\milli\meter}}
+\newcommand{\jufeet}{\unit[per-mode=fraction]{\ampere\per ft^2}}
+\newcommand{\mmph}  {\unit[per-mode=fraction]{\mm\per\hour}}
+\newcommand{\umpm}  {\unit[per-mode=fraction]{\um\per\minute}}
+
 
 
 

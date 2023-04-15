@@ -1,14 +1,18 @@
 
 %% Useful packages
+\PassOptionsToPackage{usenames,dvipsnames,svgnames,table}{xcolor}
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{crop,graphicx,amsmath,array,color,amssymb,fancyhdr,lineno}
 \usepackage{flushend,stfloats,amsthm,chngpage,times,lastpage,siunitx,chemformula}
-\usepackage{calc,listings,color,wrapfig,tabularx,longtable,enumitem}
+\usepackage{calc,listings,color,wrapfig,tabularx,longtable,enumitem,rotating,booktabs}
 % Minipage nonsense
-\usepackage{framed}
+\usepackage[most]{tcolorbox}
 \usepackage{etoolbox}
-\usepackage{hyperref}
+\usepackage{hyperref,bookmark}
 \usepackage[backend=biber,style=ieee]{biblatex}
 \addbibresource{Refs.bib}
 \usepackage{lineno}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{filecontents}
