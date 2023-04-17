@@ -91,7 +91,9 @@ A flipchip diebonder is a machine that is used to bond microelectronic chips dir
 
 
 The diebonder being used is the `TRESKY-diebond' tool in the QNC packaging lab it is the Tresky T-3000-FC3 model.
-The tool is capable of providing a bonding force of up to $490 \unit{\newton}$ ($50 \unit{\kg}$ mass) may be applied at temperatures up to $400\unit{\degreeCelsius}$. The datasheet suggests that it offers placement accuracy of $10\um$ \cite{diebonderDatasheet}.
+The tool is capable of providing a bonding force of up to $490 \unit{\newton}$ ($50 \unit{\kg}$ mass) may be applied at temperatures up to $400 \dC$. The datasheet suggests that it offers placement accuracy of $10\um$ \cite{diebonderDatasheet}.
+
+The current process of diebonding is
 
 
 Since we want to calculate and understand how the indium will conform when bonding is done, a number of characterization measurements were conducted to understand how the indium will spread and expand over the sample surface.
@@ -138,12 +140,12 @@ Since the volume of indium will not change when diebonding occurs, we can model 
 
 Based on a number of bonding experiments I determined that the average thickness of indium after bonding was around $65 \um$ a sample of the indium bump can be seen in figure \ref{fig:semIndium}
 
-\begin{wrapfigure}{R}{0.4\textwidth}
+\begin{figure}
     \centering
-    \includegraphics[width=0.35\textwidth]{Main/Ch2/indium_bump_before_bond.png}
-    \caption{SEM image of indium bump at at angle of $80^\circ$}
+    \includegraphics[width=0.65\textwidth]{Main/Ch2/indium_bump_before_bond.png}
+    \caption{SEM image of indium bump at an angle of $80^\circ$}
     \label{fig:semIndium}
-\end{wrapfigure}
+\end{figure}
 
 The raw data from which I determined the average indium thickness is from table \ref{table:thicknessMap}.
 
@@ -171,49 +173,112 @@ The raw data from which I determined the average indium thickness is from table 
     \label{table:thicknessMap}
 \end{sidewaystable}
 
-From the table after removing outlier values, the median resulting thickness is $65 \um $.
+From the table after removing outlier values, the median resulting thickness is $ ~65 \um $.
 
-The spread balies were identified fromimagestakin from the microscope in the packaging lab `OLYMPUS-scope3'
+The spread values were identified from images taken from the microscope `OLYMPUS-scope3' in the packaging lab.
 
-TODO INSERT IMAES FROM SCOPE.
+From the images captured by the scope \ref{fig:microscopeIndium}, we can see that the gimble head in the lab provides sufficiently uniform bonding pressure over the bonding area. The images also show that there is spreading of the indium as the bond is formed directly as a function of the indium volume.
 
-TODO INSERT IMAES FROM SCOPE.
+Knowing that the bond does spread will constrain the maximum density of \uleds \ for a given bump thickness.
 
-TODO INSERT IMAES FROM SCOPE.
+\begin{wrapfigure}{R}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.22\textwidth]{Main/Ch2/TL.png}
+    \includegraphics[width=0.22\textwidth]{Main/Ch2/TR.png} \\
+    \includegraphics[width=0.22\textwidth]{Main/Ch2/BL.png}
+    \includegraphics[width=0.22\textwidth]{Main/Ch2/BR.png}
+    \caption{Microscope images of diebonded sample. The internal smaller circles seen are a diameter of $42 \um$ the larger circles are the indium spreading}
+    \label{fig:microscopeIndium}
+    \vspace{0.5cm}
+\end{wrapfigure}
 
-TODO INSERT IMAES FROM SCOPE.
-
-TODO INSERT IMAES FROM SCOPE.
-
-TODO INSERT IMAES FROM SCOPE.
-
-TODO INSERT IMAES FROM SCOPE.
-
-TODO INSERT IMAES FROM SCOPE.
-
-TODO INSERT IMAES FROM SCOPE.
-
-TODO INSERT IMAES FROM SCOPE.
-
-TODO INSERT IMAES FROM SCOPE.
-
-TODO INSERT IMAES FROM SCOPE.
-
-TODO INSERT IMAES FROM SCOPE.
-
-TODO INSERT IMAES FROM SCOPE.
-
-
+\newpage
 \subsection{Thermal Simulations}
-Thermal simulations were conducted because there were some bonding failures seen in the sample.  From some sem images
 
-INSERT IMAGES OF SEM AND EDC representing wetting failutres
+Thermal simulations were conducted because there were some bonding failures seen in the samples. As can be seen from SEM images and Energy-dispersive X-ray spectroscopy (EDX or EDS) the indium does not always appropriately wet onto the other substrate being bonded onto this is seen in the SEM images in figure \ref{fig:SEM_indium_2} and EDX images in figure \ref{fig:EDX_indium_2}. There can be various reasons why indium does not wet onto a surface during diebonding. One reason could be the presence of surface contaminants such as oxides or oils, which can prevent the indium from bonding to the surface. Another reason could be an insufficient amount of heat or pressure during the diebonding process, which can cause the indium to not properly wet onto the surface. Additionally, the surface energy of the substrate can also affect the ability of indium to wet onto the surface during diebonding.
 
-There were possible suggestions that the insium was not wetting on the gold on the flip chicp sample that was being bonded to the sample. The resulting possible  estimations
+To explore further a lack of heat, thermal simulations were conducted to identify if a process change in the diebonding preocess was required. Thermal simulations were done in MATLAB with the following code in  \hyperref[sec:ThermalSimulationCode]{Appendix B}.
 
-Insert figures about the thermal simulations and refer to the code that is in the appendix
 
-Discuss the lack of wetting to the LEDs. insert the sem images and the EDX images
+\begin{wrapfigure}{L}{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-A1-s1_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-A1-s2_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-A2-s1_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-A2-s2_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-B2-s1_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-B2-s2_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-A1-s1_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-A1-s2_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-A2-s1_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-A2-s2_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-B2-s1_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-B2-s2_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-A1-s1_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-A1-s2_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-A2-s1_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-A2-s2_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-B2-s1_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-B2-s2_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-A1-s1_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-A1-s2_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-A2-s1_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-A2-s2_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-B2-s1_media_image.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-B2-s2_media_image.png}
+    \caption{SEM Images of bonds}
+    \label{fig:SEM_indium_2}
+    \vspace{0.5cm}
+\end{wrapfigure}
+
+
+\begin{wrapfigure}{R}{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-A1-s1_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-A1-s2_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-A2-s1_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-A2-s2_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-B2-s1_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-B2-s2_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-A1-s1_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-A1-s2_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-A2-s1_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-A2-s2_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-B2-s1_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-B2-s2_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-A1-s1_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-A1-s2_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-A2-s1_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-A2-s2_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-B2-s1_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-B2-s2_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-A1-s1_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-A1-s2_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-A2-s1_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-A2-s2_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-B2-s1_media_image7.png}
+    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-B2-s2_media_image7.png}
+    \caption{EDX Images of bonds}
+    \label{fig:EDX_indium_2}
+\end{wrapfigure}
+
+
+The results from the thermal simulations as seen in figure \ref{fig:thermal_simulations} in MATLAB were that there was more than sufficient time and heat to melt and wet the indium onto the opposing surface. As a result the lack of wetting was likely a result of one of the other issues (contaminants from the flip-chip process or some failure in the surface energies).
+Both of the other issues are quite possible as during the process the substrate that is bonding onto the substrate with indium on the surface is face down on the `diebonder' which is a unclean surface that also does not have the appropriate surface energies and could dissapate the surface energy generated during the plasma cleaning process.
+% TODO Verify statement about suface energy
+
+It can be seen from the thermal simulations that the time taken for the indium to reach temperature is well within $0.3 \unit{\second}$ whereas the bonding recipe calls for the sample to sit at $250 \dC$ for $5 \unit{\minute}$. This is well within 2 orders of magnitude of time for the sample to reach temperature, as such it would be safe to assume that heat/temperature or lack thereof is not the causal source of failure.
+
+
+\begin{wrapfigure}{L}{0.5\textwidth}
+    \includegraphics[width=0.21\textwidth]{Main/Ch2/heat/001.png}
+    \includegraphics[width=0.21\textwidth]{Main/Ch2/heat/002.png}
+    \includegraphics[width=0.21\textwidth]{Main/Ch2/heat/008.png}
+    \includegraphics[width=0.21\textwidth]{Main/Ch2/heat/020.png}
+    \caption{Thermal simulation results. Temperature scale is ranged from $25 \dC$ to $250 \dC$}
+    \label{fig:thermal_simulations}
+\end{wrapfigure}
+
 
 \subsection{Conformation to Theory}
 Conformed to theory when the bonding would spread according to the calculated volume
