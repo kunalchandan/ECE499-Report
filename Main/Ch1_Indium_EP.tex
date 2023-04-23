@@ -14,7 +14,7 @@ The process used there allows us to electroplate indium onto the substrate that 
 \begin{figure}[b!]
     \centering
     \includegraphics[width=0.6\textwidth]{Main/Ch1/indium_bonding.png}
-    \caption{\raggedright Eutectic bonding of $\ch{In}-\ch{Au}$ micro-bumps}
+    \caption{\raggedright Eutectic bonding of $\ch{In}-\ch{Au}$ micro-bumps. Figure from \cite{waferBondingHandbook}}
 \end{figure}
 
 
@@ -34,6 +34,7 @@ A current source would have been preferred over a voltage source due to several 
 
 With a current source, the current can be precisely controlled and maintained at a constant level, which results in consistent and uniform plating as a function of time. On the other hand, a voltage source may not provide a consistent current, as the resistance of the plating solution can vary due to factors such as temperature or impurities, leading to poor plating results.
 
+% TODO Crop this better
 \begin{wrapfigure}{R}{0.25\textwidth}
     \centering
     \includegraphics[width=0.25\textwidth]{Main/Ch1/Current Sample holder.png}
@@ -45,9 +46,9 @@ Another advantage of using a current source is that it allows for better control
 Using a voltage source with an ammeter can be equivalent to a current source in certain situations. This is because the voltage applied to a circuit is directly proportional to the current flowing through it. By measuring the current in the circuit using an ammeter, the current can be controlled by adjusting the voltage. In this way, the voltage source with an ammeter can effectively act as a current source.
 
 
-\begin{wrapfigure}{L}{0.25\textwidth}
+\begin{wrapfigure}{L}{0.35\textwidth}
     \centering
-    \includegraphics[width=0.25\textwidth]{Main/Ch1/Sample_holder.png}
+    \includegraphics[width=0.35\textwidth]{Main/Ch1/Sample_holder.png}
     \caption{\raggedright 3D Rendering of the sample holder}
     \vspace{.2cm}
 \end{wrapfigure}
@@ -148,9 +149,9 @@ From those results we can see that the estimate of area that we predicted we got
 From here a number of more experiments were conducted and condensed results of the growth were compiled in the table \ref{table:platingGrowths}
 
 
-\begin{sidewaystable}
+\begin{table}
     \centering
-    \begin{tabular}{| l | l | l | l | l |}
+    \begin{tabular}{| l | p{2cm} | p{2cm} | p{2.2cm} | p{1.8cm} |}
         \hline
         Sample Name & Electroplating Time ($\unit{\min}$)  & Electroplating Current ($\mA$) & Indium Thickness ($\um$) & Growth rate ($\unit{\micro\meter\per\min}$) \\
         \hline
@@ -170,13 +171,13 @@ From here a number of more experiments were conducted and condensed results of t
         13-Nerva        &    5   &   20    &   7.6   &   1.52       \\
         14-Trajan       &    5   &   20    &   5.6   &   1.12       \\
         15-Hadrian      &    5   &   20    &   4     &   0.8        \\
-        16-Pius         &    5   &   20    &   4     &   0.8 \\
+        16-Pius         &    5   &   20    &   4     &   0.8        \\
         \hline
         \hline
     \end{tabular}
     \caption{Table of condensed results of Phase 1 plating experiments}
     \label{table:platingGrowths}
-\end{sidewaystable}
+\end{table}
 
 
 \begin{figure}
