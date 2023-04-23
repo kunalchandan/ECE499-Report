@@ -1,6 +1,25 @@
 \section{Phase 1 - Uniform Bonding}
 
+\subsection{Process}
+The process in this section will aim to first characterize the spread of indium over the surface \ref{sec:indiumSpread} of the `LED' and `backplane' (`BP') substrates
+\footnote{The LED and backplane are in quotes as these are not actual LEDs or backplanes with transistors, but instead are mock samples with similar physical characteristics.
+Those characteristics being the sample size and the $\ch{In}-\ch{Au}$ coating on the samples.
+Differences arise from the lack of a MESA structure that will be seen in the successive chapter
+\ref{sec:BondingToLEDS}}
+and secondly validate uniform bonding over the surface of the sample \ref{sec:uniformBond}.
+
+The process that will be used to explore this is the following.
+\begin{enumerate}
+    \item Electroplate indium onto a `BP'
+    \item Remove photoresist from sample with Acetone then IPA rinse or RemoverPG
+    \item Do surface activation of LED and BP using the plasma-cleaner
+    \item Place BP face up on diebonder, and LED face down on diebonder
+    \item Using Pick-And-Place function on diebonder, pick the LED and place on the BP using the specified bonding pressure and heat recipe
+\end{enumerate}
+
+
 \subsection{Characterization of Indium Bonding Spread}
+\label{sec:indiumSpread}
 After a repeatable electroplating process for indium was developed, the next step was to investigate how the indium would spread once die-bonded. The spreading behaviour of indium is critical because it can impact the performance of the semiconductor device. Specifically, the spreading of indium can affect the heat dissipation and the electrical contact between the die and the substrate. Understanding this behaviour is essential for optimizing the performance of the device.
 This knowledge can then be used to inform the design and manufacture of semiconductor devices, improving their reliability and performance.
 Diebonding is the process of placing a semiconductor chip onto a substrate or package, and eutectic bonding is a common diebonding technique. Understanding the behaviour of indium during eutectic bonding is crucial for ensuring the reliability and performance of the final device.
@@ -177,7 +196,7 @@ From the table after removing outlier values, the median resulting thickness is 
 
 The spread values were identified from images taken from the microscope `OLYMPUS-scope3' in the packaging lab.
 
-From the images captured by the scope \ref{fig:microscopeIndium}, we can see that the gimble head in the lab provides sufficiently uniform bonding pressure over the bonding area. The images also show that there is spreading of the indium as the bond is formed directly as a function of the indium volume.
+From the images captured by the scope \ref{fig:microscopeIndium}, we can see that the gimbal head in the lab provides sufficiently uniform bonding pressure over the bonding area. The images also show that there is spreading of the indium as the bond is formed directly as a function of the indium volume.
 
 Knowing that the bond does spread will constrain the maximum density of \uleds \ for a given bump thickness.
 
@@ -193,11 +212,18 @@ Knowing that the bond does spread will constrain the maximum density of \uleds \
 \end{wrapfigure}
 
 \newpage
+\subsection{Validation of Uniform Bonding}
+\label{sec:uniformBond}
+
+\newpage
 \subsection{Thermal Simulations}
 
-Thermal simulations were conducted because there were some bonding failures seen in the samples. As can be seen from SEM images and Energy-dispersive X-ray spectroscopy (EDX or EDS) the indium does not always appropriately wet onto the other substrate being bonded onto this is seen in the SEM images in figure \ref{fig:SEM_indium_2} and EDX images in figure \ref{fig:EDX_indium_2}. There can be various reasons why indium does not wet onto a surface during diebonding. One reason could be the presence of surface contaminants such as oxides or oils, which can prevent the indium from bonding to the surface. Another reason could be an insufficient amount of heat or pressure during the diebonding process, which can cause the indium to not properly wet onto the surface. Additionally, the surface energy of the substrate can also affect the ability of indium to wet onto the surface during diebonding.
+Thermal simulations were conducted because there were some bonding failures seen in the samples. As can be seen from SEM images and Energy-dispersive X-ray spectroscopy (EDX or EDS) the indium does not always appropriately wet onto the other substrate being bonded onto this is seen in the SEM images in figure
+\ref{fig:SEM_indium_2} and EDX images in figure \ref{fig:EDX_indium_2}.
+There can be various reasons why indium does not wet onto a surface during diebonding. One reason could be the presence of surface contaminants such as oxides or oils, which can prevent the indium from bonding to the surface. Another reason could be an insufficient amount of heat or pressure during the diebonding process, which can cause the indium to not properly wet onto the surface. Additionally, the surface energy of the substrate can also affect the ability of indium to wet onto the surface during diebonding.
 
-To explore further a lack of heat, thermal simulations were conducted to identify if a process change in the diebonding preocess was required. Thermal simulations were done in MATLAB with the following code in  \hyperref[sec:ThermalSimulationCode]{Appendix B}.
+To explore further a lack of heat, thermal simulations were conducted to identify if a process change in the diebonding preprocess was required. Thermal simulations were done in MATLAB with the following code in
+\hyperref[sec:ThermalSimulationCode]{Appendix B}.
 
 
 \begin{wrapfigure}{L}{0.45\textwidth}
@@ -264,7 +290,7 @@ To explore further a lack of heat, thermal simulations were conducted to identif
 
 
 The results from the thermal simulations as seen in figure \ref{fig:thermal_simulations} in MATLAB were that there was more than sufficient time and heat to melt and wet the indium onto the opposing surface. As a result the lack of wetting was likely a result of one of the other issues (contaminants from the flip-chip process or some failure in the surface energies).
-Both of the other issues are quite possible as during the process the substrate that is bonding onto the substrate with indium on the surface is face down on the `diebonder' which is a unclean surface that also does not have the appropriate surface energies and could dissapate the surface energy generated during the plasma cleaning process.
+Both of the other issues are quite possible as during the process the substrate that is bonding onto the substrate with indium on the surface is face down on the `diebonder' which is an unclean surface that also does not have the appropriate surface energies and could dissipate the surface energy generated during the plasma cleaning process.
 % TODO Verify statement about suface energy
 
 It can be seen from the thermal simulations that the time taken for the indium to reach temperature is well within $0.3 \unit{\second}$ whereas the bonding recipe calls for the sample to sit at $250 \dC$ for $5 \unit{\minute}$. This is well within 2 orders of magnitude of time for the sample to reach temperature, as such it would be safe to assume that heat/temperature or lack thereof is not the causal source of failure.
@@ -282,7 +308,9 @@ It can be seen from the thermal simulations that the time taken for the indium t
 
 
 \subsection{Conformation to Theory}
-Conformed to theory when the bonding would spread according to the calculated volume
+In this section we wanted to ensure that there was uniform bonding across the area of the sample, this would arise from the bonding head providing relatively uniform bonding force over the sample area. From the microscope images in \ref{fig:microscopeIndium} we can see that the spread of the indium bumps is uniform over the area of the sample, this would be representative of the gimbal head providing relatively uniform pressure over the face of the sample.
+
+Conformed to theory when the bonding would spread according to the calculated volume.
 
 \subsection{Development of a Repeatable Process}
 % Adding anchors
