@@ -26,9 +26,10 @@ Diebonding is the process of placing a semiconductor chip onto a substrate or pa
 
 \begin{figure}
     \centering
+    \tiny
     \begin{tikzpicture}
         % define cell size
-        \def\cSz{0.9cm}
+        \def\cSz{0.4cm}
         \def\N{12}
 
         % draw table border
@@ -48,62 +49,56 @@ Diebonding is the process of placing a semiconductor chip onto a substrate or pa
     \label{fig:bumpHeightMap}
 \end{figure}
 
-% Next figures also have tobe regenerated
-
-
-\begin{table}[ht]
-    \begingroup
-    \renewcommand{\minval}{14.9}
-    \renewcommand{\maxval}{25.6}
-    \scriptsize
+\begin{figure}
     \centering
-    \begin{center}
-        \begin{tabular}{*{12}{|m{0.7cm}}|}
-            \hline
-            \grd{16.4}  &   & \grd{18.7}    &               &   & \grd{16.5}    & \grd{16.1}    &   &               & \grd{16.5}    &   & \grd{16.0}    \\[0.7cm]\hline
-                        &   &               &               &   &               &               &   &               &               &   &               \\[0.7cm]\hline
-                        &   &               &               &   & \grd{16.1}    & \grd{16.0}    &   &               &               &   &               \\[0.7cm]\hline
-            \grd{17.1}  &   &               & \grd{16.3}    &   &               &               &   & \grd{15.4}    &               &   & \grd{15.9}    \\[0.7cm]\hline
-                        &   &               &               &   &               &               &   &               &               &   &               \\[0.7cm]\hline
-            \grd{17.0}  &   & \grd{16.7}    &               &   & \grd{15.6}    & \grd{16.3}    &   &               & \grd{15.4}    &   & \grd{15.8}    \\[0.7cm]\hline
-            \grd{14.9}  &   & \grd{21.8}    &               &   & \grd{25.6}    & \grd{18.0}    &   &               & \grd{19.5}    &   & \grd{17.6}    \\[0.7cm]\hline
-                        &   &               &               &   &               &               &   &               &               &   &               \\[0.7cm]\hline
-            \grd{19.7}  &   &               & \grd{19.3}    &   & \grd{20.8}    &               &   &               &               &   & \grd{19.7}    \\[0.7cm]\hline
-                        &   &               &               &   &               & \grd{18.7}    &   &               & \grd{19.5}    &   &               \\[0.7cm]\hline
-                        &   &               &               &   &               &               &   &               &               &   &               \\[0.7cm]\hline
-            \grd{20.4}  &   & \grd{21.8}    &               &   & \grd{17.2}    & \grd{20.1}    &   &               & \grd{22.2}    &   & \grd{21.4}    \\[0.7cm]\hline
-        \end{tabular}
-    \end{center}
-    \endgroup
-    \caption{Indium bump width map}
-\end{table}
+    \tiny
+    \begin{tikzpicture}
+        % define cell size
+        \def\cSz{0.4cm}
+        \def\N{12}
 
-\begin{table}[ht]
-    \begingroup
-    \renewcommand{\minval}{000}
-    \renewcommand{\maxval}{9316}
-    \scriptsize
+        % draw table border
+        \draw (0,0) rectangle (\N*\cSz,\N*\cSz);
+
+        \foreach \x in {1,2,3,4,5,6,7,8,9,10,11} {
+            % draw horizontal lines
+            \draw (0,\x*\cSz) -- (\N*\cSz,\x*\cSz);
+            % draw vertical lines
+            \draw (\x*\cSz,0) -- (\x*\cSz,\N*\cSz);
+        }
+        % add cell contents
+        \input{Main/Ch2/WidthTable.tex}
+
+    \end{tikzpicture}
+    \caption{Indium bump width map. Saturation of colour indicates relative width.}
+    \label{fig:bumpWidthMap}
+\end{figure}
+
+\begin{figure}
     \centering
-    \begin{center}
-        \begin{tabular}{*{12}{|m{0.7cm}}|}
-            \hline
-            \grd{1014}  &   & \grd{1434}    &               &   & \grd{ 851}        & \grd{ 819}        &   &               & \grd{1131}        &   & \grd{1072}        \\[0.7cm]\hline
-                        &   &               &               &   &                   &                   &   &               &                   &   &                   \\[0.7cm]\hline
-                        &   &               &               &   & \grd{ 678}        & \grd{ 975}        &   &               &                   &   &                   \\[0.7cm]\hline
-            \grd{ 599}  &   &               & \grd{ 664}    &   &                   &                   &   & \grd{ 896}    &                   &   & \grd{1065}        \\[0.7cm]\hline
-                        &   &               &               &   &                   &                   &   &               &                   &   &                   \\[0.7cm]\hline
-            \grd{ 685}  &   & \grd{ 681}    &               &   & \grd{ 742}        & \grd{1097}        &   &               & \grd{ 704}        &   & \grd{ 761}        \\[0.7cm]\hline
-            \grd{1142}  &   & \grd{4479}    &               &   & \grd{9316}        & \grd{1257}        &   &               & \grd{1352}        &   & \grd{1212}        \\[0.7cm]\hline
-                        &   &               &               &   &                   &                   &   &               &                   &   &                   \\[0.7cm]\hline
-            \grd{1875}  &   &               & \grd{1828}    &   & \grd{2995}        &                   &   &               &                   &   & \grd{1832}        \\[0.7cm]\hline
-                        &   &               &               &   &                   & \grd{1359}        &   &               & \grd{1395}        &   &                   \\[0.7cm]\hline
-                        &   &               &               &   &                   &                   &   &               &                   &   &                   \\[0.7cm]\hline
-            \grd{2030}  &   & \grd{4145}    &               &   & \grd{1979}        & \grd{1604}        &   &               & \grd{2135}        &   & \grd{2144}        \\[0.7cm]\hline
-        \end{tabular}
-    \end{center}
-    \endgroup
-    \caption{Indium bump volume map}
-\end{table}
+    \tiny
+    \begin{tikzpicture}
+        % define cell size
+        \def\cSz{0.4cm}
+        \def\N{12}
+
+        % draw table border
+        \draw (0,0) rectangle (\N*\cSz,\N*\cSz);
+
+        \foreach \x in {1,2,3,4,5,6,7,8,9,10,11} {
+            % draw horizontal lines
+            \draw (0,\x*\cSz) -- (\N*\cSz,\x*\cSz);
+            % draw vertical lines
+            \draw (\x*\cSz,0) -- (\x*\cSz,\N*\cSz);
+        }
+        % add cell contents
+        \input{Main/Ch2/VolumeTable.tex}
+
+    \end{tikzpicture}
+    \caption{Indium bump volume map. Saturation of colour indicates relative volume.}
+    \label{fig:bumpVolumeMap}
+\end{figure}
+
 
 A flipchip diebonder is a machine that is used to bond microelectronic chips directly onto a substrate. It allows for precise alignment and bonding of the chip to the substrate, which is essential for the proper functioning of microelectronic devices. In addition to the standard bonding techniques, a flipchip diebonder with eutectic bonding capabilities enables the bonding of two chips by bonding with precise control of heat and pressure, which can greatly enhance the reliability and performance of the microelectronic device. Eutectic bonding is a specialized technique that involves heating the two materials to their eutectic point, at which they melt and fuse together, creating a strong and reliable bond. This makes the flipchip diebonder with eutectic bonding capability a valuable tool in the field of microelectronics for high-performance and reliable bonding of chips to substrates.
 
