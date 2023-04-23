@@ -24,32 +24,37 @@ After a repeatable electroplating process for indium was developed, the next ste
 This knowledge can then be used to inform the design and manufacture of semiconductor devices, improving their reliability and performance.
 Diebonding is the process of placing a semiconductor chip onto a substrate or package, and eutectic bonding is a common diebonding technique. Understanding the behaviour of indium during eutectic bonding is crucial for ensuring the reliability and performance of the final device.
 
-\begin{table}[ht]
-    \begingroup
-    \renewcommand{\minval}{2.61}
-    \renewcommand{\maxval}{18.1}
-    \scriptsize
+\begin{figure}
     \centering
-    \begin{center}
-        \begin{tabular}{*{12}{|m{0.7cm}}|}
-            \hline
-            \grd{4.80}  &   & \grd{5.22}    &               &   & \grd{3.98}    & \grd{4.05}    &   &               & \grd{5.32}    &   & \grd{5.33}    \\[0.7cm]\hline
-                        &   &               &               &   &               &               &   &               &               &   &               \\[0.7cm]\hline
-                        &   &               &               &   & \grd{3.33}    & \grd{4.85}    &   &               &               &   &               \\[0.7cm]\hline
-            \grd{2.61}  &   &               & \grd{3.18}    &   &               &               &   & \grd{4.81}    &               &   & \grd{5.40}    \\[0.7cm]\hline
-                        &   &               &               &   &               &               &   &               &               &   &               \\[0.7cm]\hline
-            \grd{3.02}  &   & \grd{3.11}    &               &   & \grd{3.88}    & \grd{5.29}    &   &               & \grd{3.78}    &   & \grd{3.88}    \\[0.7cm]\hline
-            \grd{6.55}  &   & \grd{12.0}    &               &   & \grd{18.1}    & \grd{4.94}    &   &               & \grd{4.55}    &   & \grd{5.01}    \\[0.7cm]\hline
-                        &   &               &               &   &               &               &   &               &               &   &               \\[0.7cm]\hline
-            \grd{6.15}  &   &               & \grd{6.28}    &   & \grd{8.82}    &               &   &               &               &   & \grd{6.04}    \\[0.7cm]\hline
-                        &   &               &               &   &               & \grd{4.95}    &   &               & \grd{4.67}    &   &               \\[0.7cm]\hline
-                        &   &               &               &   &               &               &   &               &               &   &               \\[0.7cm]\hline
-            \grd{6.21}  &   & \grd{11.1}    &               &   & \grd{8.57}    & \grd{5.08}    &   &               & \grd{5.54}    &   & \grd{5.99}    \\[0.7cm]\hline
-        \end{tabular}
-    \end{center}
-    \endgroup
-    \caption{Indium bump height map}
-\end{table}
+    \begin{tikzpicture}
+        % define cell size
+        \def\cSz{0.9cm}
+        \def\N{12}
+
+        % draw table border
+        \draw (0,0) rectangle (\N*\cSz,\N*\cSz);
+
+        \foreach \x in {1,2,3,4,5,6,7,8,9,10,11} {
+            % draw horizontal lines
+            \draw (0,\x*\cSz) -- (\N*\cSz,\x*\cSz);
+            % draw vertical lines
+            \draw (\x*\cSz,0) -- (\x*\cSz,\N*\cSz);
+        }
+        % \psset{fillstyle=solid}
+        % \definecolor{tempcolor}{rgb}{1,0.2,0.3}
+        % \psframebox[fillcolor={rgb,0.16:red,0.84:green,1.00:blue,1}]{\textcolor{white}{TEST}}
+        % \fillRGB{255}{255}{0}\node[fill,draw]{{\tt fillRGB: 255,255,0} };
+        % \fillRGB{255}{255}{0}\draw[fill,draw] (0, 0) rectangle (1, 1);
+
+        % add cell contents
+        \input{Main/Ch2/HeightTable.tex}
+
+    \end{tikzpicture}
+    \caption{Indium bump height map. Saturation of colour indicates relative thickness.}
+    \label{fig:bumpHeightMap}
+\end{figure}
+
+% Next figures also have tobe regenerated
 
 
 \begin{table}[ht]

@@ -82,7 +82,10 @@
 \newcommand\mpsubsection{\@mpstartsection{mpsubsection}{\z@}{-3.25ex \@plus -1ex \@minus -.2ex}{1.5ex \@plus .2ex}{\normalfont\normalsize\itshape}}
 
 
-
+\makeatletter
+\def\fillRGB#1#2#3{\pgfsys@color@rgb@fill{#1}{#2}{#3}}
+\makeatother
+\definecolor{purple4}{RGB}{087, 005, 139}
 %======================================
 % Color set related!
 \definecolor{high}{HTML}{57058B}  % the color for the highest number in your data set
