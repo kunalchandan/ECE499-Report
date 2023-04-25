@@ -1,6 +1,6 @@
-\section{Phase 1 - Uniform Bonding}
+\chapter{Phase 1 - Uniform Bonding}
 
-\subsection{Process}
+\section{Process}
 The process in this section will aim to first characterize the spread of indium over the surface \ref{sec:indiumSpread} of the `LED' and `backplane' (`BP') substrates
 \footnote{The LED and backplane are in quotes as these are not actual LEDs or backplanes with transistors, but instead are mock samples with similar physical characteristics.
 Those characteristics being the sample size and the $\ch{In}-\ch{Au}$ coating on the samples.
@@ -11,20 +11,31 @@ and secondly validate uniform bonding over the surface of the sample \ref{sec:un
 The process that will be used to explore this is the following.
 \begin{enumerate}
     \item Electroplate indium onto a `BP'
-    \item Remove photoresist from sample with Acetone then IPA rinse or RemoverPG
+    \item Remove photoresist from sample with Acetone then IPA rinse or Remover PG (follow the instructions in \cite{RemoverPGds})
     \item Do surface activation of LED and BP using the plasma-cleaner
     \item Place BP face up on diebonder, and LED face down on diebonder
-    \item Using Pick-And-Place function on diebonder, pick the LED and place on the BP using the specified bonding pressure and heat recipe
+    \item Using Pick-And-Place (P+P) function on diebonder, pick the LED and place on the BP using the specified bonding pressure and heat recipe
+    \begin{description}
+        \item[P+P] The recipe used on the diebonder for P+P is as following: \begin{itemize}
+            \item Approach and lift the LED using the vacuum function with an application force of $30\unit{\gram}$
+            \item Complete translational and axial alignment of the LEDs to the BP using the flip-chip camera
+            \item Ensure the eutectic bonding module is on and set to a place force of $3\unit{\kilo\gram}$
+            \item Load the correct recipe: $10\unit{\second} \text{@} 60\dC$ followed by $3\unit{\minute} \text{@} 250\dC$
+        \end{itemize}
+        \item[Bonder Head] Ensure that the bond head being used is a gimbal bond head
+    \end{description}
 \end{enumerate}
 
 
-\subsection{Characterization of Indium Bonding Spread}
+\section{Characterization of Indium Bonding Spread}
 \label{sec:indiumSpread}
 After a repeatable electroplating process for indium was developed, the next step was to investigate how the indium would spread once die-bonded. The spreading behaviour of indium is critical because it can impact the performance of the semiconductor device. Specifically, the spreading of indium can affect the heat dissipation and the electrical contact between the die and the substrate. Understanding this behaviour is essential for optimizing the performance of the device.
 This knowledge can then be used to inform the design and manufacture of semiconductor devices, improving their reliability and performance.
 Diebonding is the process of placing a semiconductor chip onto a substrate or package, and eutectic bonding is a common diebonding technique. Understanding the behaviour of indium during eutectic bonding is crucial for ensuring the reliability and performance of the final device.
 
-\begin{figure}
+\begin{figure}[h]
+    \centering
+\begin{subfigure}[t]{0.3\textwidth}
     \centering
     \tiny
     \begin{tikzpicture}
@@ -47,9 +58,9 @@ Diebonding is the process of placing a semiconductor chip onto a substrate or pa
     \end{tikzpicture}
     \caption{Indium bump height map. Saturation of colour indicates relative thickness.}
     \label{fig:bumpHeightMap}
-\end{figure}
-
-\begin{figure}
+\end{subfigure}
+-
+\begin{subfigure}[t]{0.3\textwidth}
     \centering
     \tiny
     \begin{tikzpicture}
@@ -72,9 +83,9 @@ Diebonding is the process of placing a semiconductor chip onto a substrate or pa
     \end{tikzpicture}
     \caption{Indium bump width map. Saturation of colour indicates relative width.}
     \label{fig:bumpWidthMap}
-\end{figure}
-
-\begin{figure}
+\end{subfigure}
+-
+\begin{subfigure}[t]{0.3\textwidth}
     \centering
     \tiny
     \begin{tikzpicture}
@@ -97,6 +108,7 @@ Diebonding is the process of placing a semiconductor chip onto a substrate or pa
     \end{tikzpicture}
     \caption{Indium bump volume map. Saturation of colour indicates relative volume.}
     \label{fig:bumpVolumeMap}
+\end{subfigure}
 \end{figure}
 
 
@@ -137,7 +149,7 @@ Since the volume of indium will not change when diebonding occurs, we can model 
         \def\By{0.5 } % Ellipse second radius
 
         \def\Dx{2   } % Offset distance
-        \def\Ty{-1  } % text vertical offset distance
+        \def\Ty{-1.5} % text vertical offset distance
         % First cylinder
         \draw           (   0,     0) ellipse [x radius=\Ar, y radius=\Ay]; % top
         \draw[dashed]   ( \Ar,  -\Ah) arc     (  0:180:\Ar and \Ay); % base
@@ -168,7 +180,7 @@ Based on a number of bonding experiments I determined that the average thickness
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.65\textwidth]{Main/Ch2/indium_bump_before_bond.png}
+    \includegraphics[width=0.45\textwidth]{Main/Ch2/indium_bump_before_bond.png}
     \caption{SEM image of indium bump at an angle of $80^\circ$}
     \label{fig:semIndium}
 \end{figure}
@@ -215,15 +227,18 @@ Knowing that the bond does spread will constrain the maximum density of \uleds \
     \includegraphics[width=0.22\textwidth]{Main/Ch2/BR.png}
     \caption{Microscope images of diebonded sample. The internal smaller circles seen are a diameter of $42 \um$ the larger circles are the indium spreading}
     \label{fig:microscopeIndium}
-    \vspace{0.5cm}
+    % \vspace{0.5cm}
 \end{wrapfigure}
 
-\newpage
-\subsection{Validation of Uniform Bonding}
+\section{Validation of Uniform Bonding}
 \label{sec:uniformBond}
+To validate that the bonding of the LEDs to the BP was uniform microscope images of the bonds were taken from the LED into the bond surface. As the LEDs for this phase of tests are largely transparent and mainly just dots of gold, it is very easy to see the spread of the indium bonds, this can be seen in the images in figure \ref{fig:microscopeIndium}
 
-\newpage
-\subsection{Thermal Simulations}
+The gimbal head that is used % Insert image of gimbalhead here?
+allows for
+% Reference to images of GDS files of the BP and LED
+
+\section{Thermal Simulations}
 
 Thermal simulations were conducted because there were some bonding failures seen in the samples. As can be seen from SEM images and Energy-dispersive X-ray spectroscopy (EDX or EDS) the indium does not always appropriately wet onto the other substrate being bonded onto this is seen in the SEM images in figure
 \ref{fig:SEM_indium_2} and EDX images in figure \ref{fig:EDX_indium_2}.
@@ -261,7 +276,7 @@ To explore further a lack of heat, thermal simulations were conducted to identif
     \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-B2-s2_media_image.png}
     \caption{SEM Images of bonds}
     \label{fig:SEM_indium_2}
-    \vspace{0.5cm}
+    % \vspace{0.5cm}
 \end{wrapfigure}
 
 
@@ -314,10 +329,32 @@ It can be seen from the thermal simulations that the time taken for the indium t
 \end{wrapfigure}
 
 
-\subsection{Conformation to Theory}
+\section{Conformation to Theory}
 In this section we wanted to ensure that there was uniform bonding across the area of the sample, this would arise from the bonding head providing relatively uniform bonding force over the sample area. From the microscope images in \ref{fig:microscopeIndium} we can see that the spread of the indium bumps is uniform over the area of the sample, this would be representative of the gimbal head providing relatively uniform pressure over the face of the sample.
 
 Conformed to theory when the bonding would spread according to the calculated volume.
 
-\subsection{Development of a Repeatable Process}
+To validate that the indium was spreading as expected, bumps were electroplated to achieve a width of 40 um. 40 um was selected as a final diameter for the bonded indium. To achieve this, I used the previous equation where we conserved the volume of indium % TODO cite the equation
+
+SHOW CALCULATIONS HERE
+
+To estimate appropriately I assumed the final bonding thickness was near the median value of what was recorded earlier. The new GDS files for the altered indium bumps that should achieve a thickness of $40 \um$ look like the following...
+
+After proceeding with the bonding the new images look as follows in figure
+% insert image and reference to image
+
+
+as can be clearly seen in the images there is a margin of error of XX%
+
+While this deviates from the preliminary theory this is in part due to the basic modelling of the indium bumps that are assumed to be perfect cylinders. It is clear from the images taken with the SEM that this is not the case and both over plating and under plating cause serious decision from expected results.
+
+While results seemed promising with the bonding the bonds from this series of experiments seemed to break quite easily. Many of the resulting bonds did not last long enough for the pick and place to remove the head and others failed to last long enough to be transported across the lab to the microscope for imaging of the bonds.
+
+To resolve these issues I explain in further depth in the following section.
+
+
+\section{Development of a Repeatable Process}
+
+As previously described a number of bonds did not last long enough for the diebonder to remove the head from on top of the LEDs. While we expected the bonds to be mechanically insecure we expected them to handle careful transport for a few days to weeks while characterization could be done. Instead, we observed immediate failures that could have been as a result of a variety of reasons. Some of these reasons were described in the previous chapter. To avoid tautology the solutions discussed here were to improve the cleanliness of the handling of samples and to increase the area that would bond the LEDs to the bps
+
 % Adding anchors
