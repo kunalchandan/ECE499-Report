@@ -245,6 +245,24 @@ To validate that the bonding of the LEDs to the BP was uniform microscope images
 
 The gimbal head that is used % Insert image of gimbalhead here?
 allows for
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \def\l{6cm}
+        \def\t{12pt}
+
+        \draw[draw=none, fill=CadetBlue!50]            (0, 0)          rectangle (\l, \t)           node[midway, right, xshift=\l/4] {Steel};
+        \draw[draw=none, fill=purple4!50]              (0, \t)         rectangle (\l, \t*2)         node[midway, right, xshift=\l/4] {Rubber};
+        \draw[draw=none, fill=CadetBlue!50]            (0, \t*2)       rectangle (\l, \t*3)         node[midway, right, xshift=\l/4] {Steel};
+        \draw[draw=none, fill=CadetBlue!50]            (\l*0.60, \t*2) rectangle (\l*0.40, \t*10);
+        \draw[draw=none, fill=white, fill opacity=0.5] (\l*0.55, 0)    rectangle (\l*0.45, \t*10)   node[midway, rotate=90] {Vacuum hole};
+    \end{tikzpicture}
+    \caption{Gimbal head cross-section view (not to scale)}
+    \label{fig:gimbal_head}
+\end{figure}
+
+
 % Reference to images of GDS files of the BP and LED
 
 \section{Thermal Simulations}
