@@ -12,28 +12,52 @@ The process that will be used to explore this is the following.
 \begin{enumerate}
     \item Electroplate indium onto a `BP'
     \item Remove photoresist from sample with Acetone then IPA rinse or Remover PG (follow the instructions in \cite{RemoverPGds})
-    \item Do surface activation of LED and BP using the plasma-cleaner
-    \item Place BP face up on diebonder, and LED face down on diebonder
+    \item Do surface activation of LED and BP using the plasma cleaner
+    \item Place BP face up and LED face down on diebonder
     \item Using Pick-And-Place (P+P) function on diebonder, pick the LED and place on the BP using the specified bonding pressure and heat recipe
     \begin{description}
+        \item[Bonder Head] Ensure that the bond head being used is a gimbal bond head \footnote{Gimbal diebonding head is used to minimize non-uniformity of bonding pressure over the surface of the sample}
         \item[P+P] The recipe used on the diebonder for P+P is as following: \begin{itemize}
             \item Approach and lift the LED using the vacuum function with an application force of $30\unit{\gram}$
-            \item Complete translational and axial alignment of the LEDs to the BP using the flip-chip camera
+            \item Complete translational and axial alignment of the LEDs to the BP using the flip-chip camera \footnote{Due to the limitations of the diebonder in the packaging lab, alignment must be done on only one section of the viewfinder. This is due to the non-planar alignment of the optical path in the flip-chip camera.}
             \item Ensure the eutectic bonding module is on and set to a place force of $3\unit{\kilo\gram}$
             \item Load the correct recipe: $10\unit{\second} \text{@} 60\dC$ followed by $3\unit{\minute} \text{@} 250\dC$
         \end{itemize}
-        \item[Bonder Head] Ensure that the bond head being used is a gimbal bond head
     \end{description}
 \end{enumerate}
 
-
-\section{Characterization of Indium Bonding Spread}
-\label{sec:indiumSpread}
 After a repeatable electroplating process for indium was developed, the next step was to investigate how the indium would spread once die-bonded. The spreading behaviour of indium is critical because it can impact the performance of the semiconductor device. Specifically, the spreading of indium can affect the heat dissipation and the electrical contact between the die and the substrate. Understanding this behaviour is essential for optimizing the performance of the device.
 This knowledge can then be used to inform the design and manufacture of semiconductor devices, improving their reliability and performance.
 Diebonding is the process of placing a semiconductor chip onto a substrate or package, and eutectic bonding is a common diebonding technique. Understanding the behaviour of indium during eutectic bonding is crucial for ensuring the reliability and performance of the final device.
 
-\begin{figure}[h]
+A flipchip diebonder is a machine that is used to bond microelectronic chips directly onto a substrate. It allows for precise alignment and bonding of the chip to the substrate, which is essential for the proper functioning of microelectronic devices. In addition to the standard bonding techniques, a flipchip diebonder with eutectic bonding capabilities enables the bonding of two chips by bonding with precise control of heat and pressure, which can greatly enhance the reliability and performance of the microelectronic device. Eutectic bonding is a specialized technique that involves heating the two materials to their eutectic point, at which they melt and fuse together, creating a bond. \footnote{The material and strength properties of the bond will be discussed further in the chapter in section \ref{sec:Ch2_repeatable}} This makes the flipchip diebonder with eutectic bonding capability a valuable tool in the field of microelectronics for high-performance and reliable bonding of chips to substrates.
+
+
+The diebonder being used is the `TRESKY-diebond' tool in the QNC packaging lab it is the Tresky T-3000-FC3 model.
+The tool is capable of providing a bonding force of up to $490 \unit{\newton}$ ($50 \unit{\kg}$ mass) may be applied at temperatures up to $400 \dC$. The datasheet suggests that it offers placement accuracy of $\pm10\um$ \cite{diebonderDatasheet}, While not specified, there are also inherent limitations to the axial accuracy due to the backlash in the gearing of the rotational alignment system.
+
+
+
+\section{Characterization of Indium Bonding Spread}
+\label{sec:indiumSpread}
+
+In this section, we will explore the characterization of indium spreading during the diebonding process. The primary goal is to gain a deeper understanding of how the indium will melt and spread during the process. We will achieve this by analyzing SEM images of the initial volume and microscope images taken after diebonding. Through this analysis, we aim to identify and quantify the parameters that influence indium spreading and develop an understanding of the fundamental mechanisms involved. The insights gained from this section will help optimize the diebonding process and improve the quality of the final product.
+
+When indium is deposited on a substrate, it forms cylindrical columns that are circular when viewed from the top. During the diebonding process, the indium will melt and spread to form a bond between the substrate and the die. We expect the indium to spread in a circular fashion due to the surface tension of the liquid metal and due to the physical constraints for the material to move when being in essence `squeezed' between two plates. As the indium melts, its surface will try to minimize its surface area and form a shape with the lowest surface area possible, which in this case is a circle. Therefore, understanding the spreading behaviour of the indium is crucial for achieving a successful diebonding process.
+
+Since we want to calculate and understand how the indium will conform when bonding is done, a number of characterization measurements were conducted to understand how the indium will spread and expand over the sample surface. We know the volume of indium will not change when diebonding occurs, we can model the spread of indium as a flattening of a cylinder.
+
+\begin{equation}\tag{B}
+    \begin{split}
+        V_{Cylinder Initial} &= V_{Cylinder Final} \\
+        \pi \times r_{Initial}^2 \times h_{Initial} &= \pi \times r_{Final}^2 \times h_{Final} \\
+        \sqrt{\frac{h_{Initial}}{h_{Final}}} r_{Initial} &= r_{Final} \\
+        \sqrt{\frac{h_{Initial}}{ 0.65 \um}} r_{Initial} &= r_{Final}
+    \end{split}
+\end{equation}
+
+
+\begin{figure}
     \centering
 \begin{subfigure}[t]{0.3\textwidth}
     \centering
@@ -59,7 +83,7 @@ Diebonding is the process of placing a semiconductor chip onto a substrate or pa
     \caption{Indium bump height map. Saturation of colour indicates relative thickness.}
     \label{fig:bumpHeightMap}
 \end{subfigure}
--
+~
 \begin{subfigure}[t]{0.3\textwidth}
     \centering
     \tiny
@@ -84,7 +108,7 @@ Diebonding is the process of placing a semiconductor chip onto a substrate or pa
     \caption{Indium bump width map. Saturation of colour indicates relative width.}
     \label{fig:bumpWidthMap}
 \end{subfigure}
--
+~
 \begin{subfigure}[t]{0.3\textwidth}
     \centering
     \tiny
@@ -109,33 +133,18 @@ Diebonding is the process of placing a semiconductor chip onto a substrate or pa
     \caption{Indium bump volume map. Saturation of colour indicates relative volume.}
     \label{fig:bumpVolumeMap}
 \end{subfigure}
+\caption{Maps of indium bump metrics.}
+\end{figure}
+
+% TODO Insert GDS of indium bump array
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Main/Ch2/DC_DieBTest_V2.GDStex_output.pdf}
+    \caption{GDS file of electroplating sample. Green indicates the locations with indium electroplated. }
 \end{figure}
 
 
-A flipchip diebonder is a machine that is used to bond microelectronic chips directly onto a substrate. It allows for precise alignment and bonding of the chip to the substrate, which is essential for the proper functioning of microelectronic devices. In addition to the standard bonding techniques, a flipchip diebonder with eutectic bonding capabilities enables the bonding of two chips by bonding with precise control of heat and pressure, which can greatly enhance the reliability and performance of the microelectronic device. Eutectic bonding is a specialized technique that involves heating the two materials to their eutectic point, at which they melt and fuse together, creating a strong and reliable bond. This makes the flipchip diebonder with eutectic bonding capability a valuable tool in the field of microelectronics for high-performance and reliable bonding of chips to substrates.
-
-
-The diebonder being used is the `TRESKY-diebond' tool in the QNC packaging lab it is the Tresky T-3000-FC3 model.
-The tool is capable of providing a bonding force of up to $490 \unit{\newton}$ ($50 \unit{\kg}$ mass) may be applied at temperatures up to $400 \dC$. The datasheet suggests that it offers placement accuracy of $10\um$ \cite{diebonderDatasheet}.
-
-The current process of diebonding is
-
-
-Since we want to calculate and understand how the indium will conform when bonding is done, a number of characterization measurements were conducted to understand how the indium will spread and expand over the sample surface.
-
-Since the volume of indium will not change when diebonding occurs, we can model the spread of indium as a flattening of a cylinder.
-
-\begin{equation}\tag{B}
-    \begin{split}
-        V_{Cylinder Initial} &= V_{Cylinder Final} \\
-        \pi \times r_{Initial}^2 \times h_{Initial} &= \pi \times r_{Final}^2 \times h_{Final} \\
-        \sqrt{\frac{h_{Initial}}{h_{Final}}} r_{Initial} &= r_{Final} \\
-        \sqrt{\frac{h_{Initial}}{ 0.65 \um}} r_{Initial} &= r_{Final}
-    \end{split}
-\end{equation}
-
-
-
+% Specify [NUM] for wrapping # of lines b/w wrapfig and L
 \begin{wrapfigure}{L}{0.75\textwidth}
     \centering
     \begin{tikzpicture}
@@ -178,12 +187,12 @@ Since the volume of indium will not change when diebonding occurs, we can model 
 
 Based on a number of bonding experiments I determined that the average thickness of indium after bonding was around $0.65 \um$ a sample of the indium bump can be seen in figure \ref{fig:semIndium}
 
-\begin{figure}
+\begin{wrapfigure}{R}{0.5\textwidth}
     \centering
     \includegraphics[width=0.45\textwidth]{Main/Ch2/indium_bump_before_bond.png}
     \caption{SEM image of indium bump at an angle of $80^\circ$}
     \label{fig:semIndium}
-\end{figure}
+\end{wrapfigure}
 
 The raw data from which the average indium thickness is determined table \ref{table:thicknessMap}.
 
@@ -219,7 +228,7 @@ From the images captured by the scope \ref{fig:microscopeIndium}, we can see tha
 
 Knowing that the bond does spread will constrain the maximum density of \uleds \ for a given bump thickness.
 
-\begin{wrapfigure}{R}{0.5\textwidth}
+\begin{wrapfigure}{0.5\textwidth}
     \centering
     \includegraphics[width=0.22\textwidth]{Main/Ch2/TL.png}
     \includegraphics[width=0.22\textwidth]{Main/Ch2/TR.png} \\
@@ -247,68 +256,73 @@ There can be various reasons why indium does not wet onto a surface during diebo
 To explore further a lack of heat, thermal simulations were conducted to identify if a process change in the diebonding preprocess was required. Thermal simulations were done in MATLAB with the following code in
 \hyperref[sec:ThermalSimulationCode]{Appendix B}.
 
-
-\begin{wrapfigure}{L}{0.45\textwidth}
+\begin{figure}[h]
     \centering
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-A1-s1_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-A1-s2_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-A2-s1_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-A2-s2_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-B2-s1_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-B2-s2_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-A1-s1_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-A1-s2_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-A2-s1_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-A2-s2_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-B2-s1_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-B2-s2_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-A1-s1_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-A1-s2_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-A2-s1_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-A2-s2_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-B2-s1_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-B2-s2_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-A1-s1_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-A1-s2_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-A2-s1_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-A2-s2_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-B2-s1_media_image.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-B2-s2_media_image.png}
+\begin{subfigure}[t]{0.4\textwidth}
+    \centering
+    \begin{tabular}{c c c c}
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-A1-s1_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-A1-s2_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-A2-s1_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-A2-s2_media_image.png} \\
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-B2-s1_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-01-B2-s2_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-A1-s1_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-A1-s2_media_image.png} \\
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-A2-s1_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-A2-s2_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-B2-s1_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TBP-02-B2-s2_media_image.png} \\
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-A1-s1_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-A1-s2_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-A2-s1_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-A2-s2_media_image.png} \\
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-B2-s1_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-01-B2-s2_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-A1-s1_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-A1-s2_media_image.png} \\
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-A2-s1_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-A2-s2_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-B2-s1_media_image.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/SEM/In-EP-EDx_TLED-02-B2-s2_media_image.png} \\
+    \end{tabular}
     \caption{SEM Images of bonds}
     \label{fig:SEM_indium_2}
-    % \vspace{0.5cm}
-\end{wrapfigure}
-
-
-\begin{wrapfigure}{R}{0.45\textwidth}
+\end{subfigure}
+~
+\begin{subfigure}[t]{0.4\textwidth}
     \centering
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-A1-s1_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-A1-s2_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-A2-s1_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-A2-s2_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-B2-s1_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-B2-s2_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-A1-s1_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-A1-s2_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-A2-s1_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-A2-s2_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-B2-s1_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-B2-s2_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-A1-s1_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-A1-s2_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-A2-s1_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-A2-s2_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-B2-s1_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-B2-s2_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-A1-s1_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-A1-s2_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-A2-s1_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-A2-s2_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-B2-s1_media_image7.png}
-    \includegraphics[width=0.1\textwidth]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-B2-s2_media_image7.png}
-    \caption{EDX Images of bonds}
+    \begin{tabular}{c c c c}
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-A1-s1_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-A1-s2_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-A2-s1_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-A2-s2_media_image7.png} \\
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-B2-s1_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-01-B2-s2_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-A1-s1_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-A1-s2_media_image7.png} \\
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-A2-s1_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-A2-s2_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-B2-s1_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TBP-02-B2-s2_media_image7.png} \\
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-A1-s1_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-A1-s2_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-A2-s1_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-A2-s2_media_image7.png} \\
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-B2-s1_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-01-B2-s2_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-A1-s1_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-A1-s2_media_image7.png} \\
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-A2-s1_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-A2-s2_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-B2-s1_media_image7.png} &
+    \includegraphics[height=1cm]{Main/Ch2/extracted/Indium/In-EP-EDx_TLED-02-B2-s2_media_image7.png} \\
+    \end{tabular}
+    \caption{EDX Images of bonds, colour indicates presence of indium}
     \label{fig:EDX_indium_2}
-\end{wrapfigure}
+\end{subfigure}
+\caption{SEM and EDX images of the diebonds.}
+\end{figure}
 
 
 The results from the thermal simulations as seen in figure \ref{fig:thermal_simulations} in MATLAB were that there was more than sufficient time and heat to melt and wet the indium onto the opposing surface. As a result the lack of wetting was likely a result of one of the other issues (contaminants from the flip-chip process or some failure in the surface energies).
@@ -354,7 +368,10 @@ To resolve these issues I explain in further depth in the following section.
 
 
 \section{Development of a Repeatable Process}
+\label{sec:Ch2_repeatable}
 
-As previously described a number of bonds did not last long enough for the diebonder to remove the head from on top of the LEDs. While we expected the bonds to be mechanically insecure we expected them to handle careful transport for a few days to weeks while characterization could be done. Instead, we observed immediate failures that could have been as a result of a variety of reasons. Some of these reasons were described in the previous chapter. To avoid tautology the solutions discussed here were to improve the cleanliness of the handling of samples and to increase the area that would bond the LEDs to the bps
+As previously described a number of bonds did not last long enough for the diebonder to remove the head from on top of the LEDs. While we expected the bonds to be mechanically insecure, we still expected them to handle careful transport for a few days to weeks while characterization could be done. Instead, we observed immediate failures that could have been as a result of a variety of reasons. Some of these reasons were described in the previous chapter. To avoid tautology the solutions discussed here were to improve the cleanliness of the handling of samples and to increase the area that would bond the LEDs to the bps
+
+
 
 % Adding anchors
