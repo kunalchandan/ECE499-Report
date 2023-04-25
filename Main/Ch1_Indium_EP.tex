@@ -15,6 +15,7 @@ The process used there allows us to electroplate indium onto the substrate that 
     \centering
     \includegraphics[width=0.4\textwidth]{Main/Ch1/indium_bonding.png}
     \caption{Eutectic bonding of $\ch{In}-\ch{Au}$ micro-bumps. Figure from \cite{waferBondingHandbook}}
+    \label{fig:waferbondingdiagram}
 \end{figure}
 
 
@@ -35,9 +36,9 @@ A current source would have been preferred over a voltage source due to several 
 With a current source, the current can be precisely controlled and maintained at a constant level, which results in consistent and uniform plating as a function of time. On the other hand, a voltage source may not provide a consistent current, as the resistance of the plating solution can vary due to factors such as temperature or impurities, leading to poor plating results.
 
 % TODO Crop this better
-\begin{wrapfigure}{R}{0.25\textwidth}
+\begin{wrapfigure}{R}{0.2\textwidth}
     \centering
-    \includegraphics[width=0.25\textwidth]{Main/Ch1/Current Sample holder.png}
+    \includegraphics[width=0.2\textwidth]{Main/Ch1/Current Sample holder.png}
     \caption{Line drawing of the alligator clip and sample }
 \end{wrapfigure}
 
@@ -46,11 +47,22 @@ Another advantage of using a current source is that it allows for better control
 Using a voltage source with an ammeter can be equivalent to a current source in certain situations. This is because the voltage applied to a circuit is directly proportional to the current flowing through it. By measuring the current in the circuit using an ammeter, the current can be controlled by adjusting the voltage. In this way, the voltage source with an ammeter can effectively act as a current source.
 
 
-\begin{wrapfigure}{L}{0.35\textwidth}
+\begin{wrapfigure}{L}{0.65\textwidth}
     \centering
-    \includegraphics[width=0.35\textwidth]{Main/Ch1/Sample_holder.png}
-    \caption{\raggedright 3D Rendering of the sample holder}
-    \vspace{.2cm}
+    % \includegraphics[width=0.35\textwidth]{Main/Ch1/Sample_holder.png}
+    \begin{subfigure}{0.35\textwidth}
+        \centering
+        \includegraphics[height=3.2cm]{Main/Ch1/electroplating_setup.png}
+        \caption{3D render of sample holder.}
+    \end{subfigure}
+    ~
+    \begin{subfigure}{0.25\textwidth}
+        \centering
+        \includegraphics[height=3.2cm]{Main/Ch1/electroplating_setup_picture.png}
+        \caption{Picture of physical device.}
+    \end{subfigure}
+    \caption{Sample holder}
+    % \vspace{.2cm}
 \end{wrapfigure}
 
 The sample holder consists of two plastic blocks that are held together by two steel bars. Thumbscrews are used to lock the relative position of the plastic pieces in place while the assembly 'floats'  on the lip of the beaker the sample is submerged into. One of the two plastic pieces has a stopper that helps constrain the position of the assembly on the beaker while the other plastic piece holds the glass rod and alligator clip.

@@ -224,7 +224,18 @@ From the table after removing outlier values, the median resulting thickness is 
 
 The spread values were identified from images taken from the microscope `OLYMPUS-scope3' in the packaging lab.
 
-From the images captured by the scope \ref{fig:microscopeIndium}, we can see that the gimbal head in the lab provides sufficiently uniform bonding pressure over the bonding area. The images also show that there is spreading of the indium as the bond is formed directly as a function of the indium volume.
+From the images captured by the scope \ref{fig:microscopeIndium}, we can see that the gimbal head in the lab provides sufficiently uniform bonding pressure over the bonding area. The images also show that there is spreading of the indium as the bond is formed directly as a function of the indium volume. This is clear from the fact that the initial electroplated area indicated in a light grey is $42\um$ in size and the spread area indicated in dark grey is around $100 \um$ in size.
+
+This corresponds to what we see in \ref{eq:radius_indium}. Where the initial height of the indium growth from what we expect in \ref{fig:scatterplot} where the growth is estimated to be $4-5\um$ in thickness.
+
+
+\begin{equation}\tag{B} \label{eq:radius_indium}
+    \begin{split}
+        \sqrt{\frac{h_{Initial}}{ 0.65 \um}} 21 \um &= r_{Final} \um \\
+        52.1 &\approx 50 \um
+    \end{split}
+\end{equation}
+
 
 Knowing that the bond does spread will constrain the maximum density of \uleds \ for a given bump thickness.
 
@@ -376,7 +387,72 @@ After proceeding with the bonding the new images look as follows in figure
 % insert image and reference to image
 
 
-as can be clearly seen in the images there is a margin of error of XX%
+As can be clearly seen in the images although there is some error in bonding spread, at this scale the placement accuracy limitations play a more significant role and constrain the critical dimension for the bond diameter. Furthermore, the bond size appears to conform to our expectations and reaches a size close to what was predicted.
+
+While the size of the bonds deviate from the preliminary theory this is in part due to the basic modelling of the indium bumps that are assumed to be perfect cylinders. It is clear from the images taken with the SEM that this is not the case and both over plating and under plating cause serious decision from expected results \ref{fig:overplating}.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{Main/Ch2/overplating/overplating.png}
+        \caption{Microscope image of diebonding results from a sample that has been overplated}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{Main/Ch2/overplating/overplating-sem1.png}
+        \caption{SEM image of electroplated bump from a sample that has been overplated}
+        \label{fig:not-measured}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{Main/Ch2/overplating/overplating-sem2.png}
+        \caption{SEM image of diebonding results from sample in \ref{fig:not-measured} (with measurements)}
+    \end{subfigure}
+    \caption{Images of sample that has been overplated.}
+    \label{fig:overplating}
+\end{figure}
+
+While results seemed promising with the bonding the bonds from this series of experiments broke very easily. Many of the resulting bonds did not last long enough for the pick and place to remove the head and others failed to last long enough to be transported across the lab to the microscope for imaging of the bonds.
+In the \ref{sec:bond_failures} I discuss the method by which the $\ch{AuIn2}$ bond forms and why failures occur.
+
+
+\section{Bond failures}
+\label{sec:bond_failures}
+
+This section will complete a small literature review as to how the bond between the LED and BP forms and why there is failure in the previous experiments.
+
+The Handbook of Wafer Bonding \cite{waferBondingHandbook} suggests that a typical $\ch{In-Au}$ bump consists of a $3\um$ thick indium layer and a $0.3\um$ thick gold layer. The diagram in \ref{fig:waferbondingdiagram} part (a) shows what a typical construction of a microbump looks like. While there are differences in the way we construct our bond which looks like \ref{fig:bond_diagram}
+
+\begin{figure}
+    \definecolor{cadetgrey}{HTML}{91A3B0}
+    \definecolor{chromeyellow}{HTML}{FFF600}
+    \centering
+    \begin{tikzpicture}
+        \def\l{10cm}
+        \def\t{12pt}
+
+        \draw[draw=none, fill=CadetBlue!50] (0, 0) rectangle (\l, \t*3) node[midway] {Sapphire $\geq 400 \um$};
+        \draw[draw=none, fill=cadetgrey!50] (0, \t*3) rectangle (\l, \t*4) node[midway] {$\ch{Cr} \approx 30 \nm$};
+        \draw[draw=none, fill=chromeyellow!50] (0, \t*4) rectangle (\l, \t*5) node[midway] {$\ch{Au} \approx 200 \nm$};
+        \draw[draw=none, fill=purple4!50] (\l*0.2, \t*5) rectangle (\l*0.7, \t*6) node[midway] {Photoresist $\approx 6-8 \um$ \cite{AZPdatasheet}};
+        \draw[draw=none, fill=purple4!50] (\l*.95, \t*5) rectangle (\l, \t*6) ;
+        \draw[draw=none, fill=purple4!50] (0, \t*5) rectangle (\l*.1, \t*6);
+        \draw[draw=none, fill=cadetgrey!50] (\l*0.1, \t*5) rectangle (\l*.2, \t*6);
+        \draw[draw=none, fill=cadetgrey!50] (\l*.7, \t*5) rectangle (\l*.95, \t*6) node[midway] {$\ch{In} \approx 6-8 \um$};
+
+        \draw[draw=none, fill=CadetBlue!50] (0, \t*16) rectangle (\l/3, \t*19) node[midway] {Sapphire $\geq 400 \um$};
+        \draw[draw=none, fill=cadetgrey!50] (0, \t*16) rectangle (\l/3, \t*15) node[midway] {$\ch{Cr} \approx 30 \nm$};
+        \draw[draw=none, fill=chromeyellow!50] (0, \t*15) rectangle (\l/3, \t*14) node[midway] {$\ch{Au} \approx 200 \nm$};
+        \node at (\l/2, \t*17.5) {Or};
+        \draw[draw=none, fill=CadetBlue!50] (2*\l/3, \t*16) rectangle (\l, \t*19) node[midway] {Sapphire $\geq 400 \um$};
+        \draw[draw=none, fill=cadetgrey!50] (2*\l/3, \t*16) rectangle (\l, \t*15) node[midway] {$\ch{Cr} \approx 30 \nm$};
+        \draw[draw=none, fill=chromeyellow!50] (2*\l/3, \t*15) rectangle (\l, \t*14) node[midway] {$\ch{Au} \approx 200 \nm$};
+        \draw[draw=none, fill=cadetgrey!50] (2*\l/3, \t*14) rectangle (\l, \t*13) node[midway] {$\ch{In} \approx 6-8 \um$};
+
+    \end{tikzpicture}
+    \caption{Bond diagram, photoresist is removed before diebonding.}
+    \label{fig:bond_diagram}
+\end{figure}
 
 While this deviates from the preliminary theory this is in part due to the basic modelling of the indium bumps that are assumed to be perfect cylinders. It is clear from the images taken with the SEM that this is not the case and both over plating and under plating cause serious decision from expected results.
 
