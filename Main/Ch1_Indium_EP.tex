@@ -1,9 +1,9 @@
-\section{Indium Electroplating}
+\chapter{Indium Electroplating}
 
-\subsection{Introduction}
+\section{Introduction}
 There are a variety of methods for indium electroplating, while I did not select the electroplating process there are a variety of methods available that are commonly used in industry. The largest differences tend to be in what comprises the solution and the operating temperatures.
 
-\subsection{Process}
+\section{Process}
 The indium electroplating process is based on a now industry standard process that is known to yield good results while requiring a minimum of process optimization. Indium easily allows for wafer bumping where the deformability, low melting point, and cold welding properties \cite{indiumCorpPulsing}. While other alloys consisting of tin and lead or tin, silver, and copper are also used for these processes they come with other disadvantages such as large crystal sizes and high sensitivity to temperature. The plating solution provided by Indium corporation contains
 
 
@@ -11,16 +11,16 @@ Adapting the indium electroplating process to the E3-3139 and the resources avai
 
 The process used there allows us to electroplate indium onto the substrate that is Chrome-Gold on Sapphire. Gold is an excellent material for indium to easily electroplate onto, and is particularly effective for eutectic bonding for $\ch{In}-\ch{Au}$ as the alloy that is formed is able to effectively join the wafers \cite{waferBondingHandbook}.
 
-\begin{figure}[b!]
+\begin{figure}
     \centering
-    \includegraphics[width=0.6\textwidth]{Main/Ch1/indium_bonding.png}
-    \caption{\raggedright Eutectic bonding of $\ch{In}-\ch{Au}$ micro-bumps. Figure from \cite{waferBondingHandbook}}
+    \includegraphics[width=0.4\textwidth]{Main/Ch1/indium_bonding.png}
+    \caption{Eutectic bonding of $\ch{In}-\ch{Au}$ micro-bumps. Figure from \cite{waferBondingHandbook}}
 \end{figure}
 
 
 \newpage
 
-\subsection{Existing Setup Description}
+\section{Existing Setup Description}
 
 In summary the process has us prepare the sample with acids before placing into the plating solution. Then the sample holder and sample are submerged in the plating solution and the current source is applied. However, due to cost constraints a voltage source was obtained to perform in place of a current source.
 
@@ -67,7 +67,7 @@ The glass rod is attached to the plastic piece and has the alligator clip on it.
 \end{wrapfigure}
 
 
-\subsection{Physical Problems with the setup}
+\section{Physical Problems with the setup}
 
 % TODO Replace derivative with derivative library maybe?
 The existing setup came with an analog voltage supply that was only able to provide analog control of the voltage based on two knobs (a fine and coarse). This control was only fine enough to $\pm 10 \mV$ where the derivative of the current with respect to voltage in the relevant regime was $\frac{d \mA}{d \mV} = \frac{0.3 \mA}{1 \mV}$.
@@ -77,7 +77,7 @@ I replaced the existing voltage supply with a Tektronics function generator as i
 The function generator would allow for pulsed plating as recommended by the indium corporation \cite{indiumCorpGrainStructure}
 
 \newpage
-\subsection{Experimental Issues - Deviation from Theory}
+\section{Experimental Issues - Deviation from Theory}
 
 According to the Indium corporation docs, the recommended electroplating current density for plating is $10-100 \jufeet$ at $20 \jufeet$ we should observe plating growth at $1.5 \mmph$.
 Converting to SI units from ASME units we see that this yields a plating current of $ J_{Plating} \approx 0.11-1.1 \junits \rightarrow I_{Plating} = 2.907 \mA$. However, in this analysis we have only considered the active plating area of the sample, and we have failed to consider the plating area of the exposed alligator clip that holds the sample.
@@ -232,7 +232,7 @@ From here a number of more experiments were conducted and condensed results of t
 
 
 
-\subsection{Development of a Repeatable Process}
+\section{Development of a Repeatable Process}
 In summary, the highlighted issues here have to do with the excessive easy by which the sample holder assembly floats on the beaker, this can in instances cause significant change in the plating rate as seen by the large variance in plating rate as seen in the scatter plot figure \ref{fig:scatterplot}. I must ensure that the sample is well aligned and distanced appropriately from the indium anode to minimize confounding factors.
 
 Secondly in this section we improved plating current control with the use of a digital function generator and an ammeter in series. With this control of the plating current density was significantly improved by almost 1 order of magnitude.

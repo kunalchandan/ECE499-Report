@@ -1,5 +1,5 @@
 % !TeX root = main.tex
-\documentclass{article}
+\documentclass{report}
 
 \input{Includes.tex}
 \input{CustomCommands.tex}
@@ -18,7 +18,7 @@
 \author{Kunal Chandan}
 
 \begin{document}
-\input{Title/title.tex}
+\include{Title/title.tex}
 
 
 \fancyhf{}
@@ -27,8 +27,8 @@
 \fancyfoot[R]{ \bf\thepage\ \rm }%
 \pagenumbering{gobble}
 
-\input{Title/Abstract.tex}
-\input{Title/Acknowledgement.tex}
+\include{Title/Abstract.tex}
+\include{Title/Acknowledgement.tex}
 
 \newpage
 \tableofcontents
@@ -38,21 +38,21 @@
 \include{Nomenclature.tex}
 \pagenumbering{arabic}
 \setcounter{page}{1}
-\input{Main/Introduction.tex}
+\include{Main/Introduction.tex}
 \newpage
-\input{Main/Ch1_Indium_EP.tex}
+\include{Main/Ch1_Indium_EP.tex}
 \newpage
-\input{Main/Ch2_Phase1-Uniform_Bonding.tex}
+\include{Main/Ch2_Phase1-Uniform_Bonding.tex}
 \newpage
-\input{Main/Ch3_Phase2-Electrical_Connection.tex}
+\include{Main/Ch3_Phase2-Electrical_Connection.tex}
 \newpage
-\input{Main/Ch4_Phase3-Bonding_to_LEDs.tex}
+\include{Main/Ch4_Phase3-Bonding_to_LEDs.tex}
 \newpage
-\input{Addendum/Addendum.tex}
+\include{Addendum/Addendum.tex}
 
 \pagebreak
 \printbibliography
 \pagebreak
-\input{Appendix/Appendix.tex}
+\include{Appendix/Appendix.tex}
 
 \end{document}
