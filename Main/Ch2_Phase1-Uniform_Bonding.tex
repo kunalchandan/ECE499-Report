@@ -47,7 +47,7 @@ When indium is deposited on a substrate, it forms cylindrical columns that are c
 
 Since we want to calculate and understand how the indium will conform when bonding is done, a number of characterization measurements were conducted to understand how the indium will spread and expand over the sample surface. We know the volume of indium will not change when diebonding occurs, we can model the spread of indium as a flattening of a cylinder.
 
-\begin{equation}\tag{B}
+\begin{equation}\tag{B} \label{eq:radius_indium}
     \begin{split}
         V_{Cylinder Initial} &= V_{Cylinder Final} \\
         \pi \times r_{Initial}^2 \times h_{Initial} &= \pi \times r_{Final}^2 \times h_{Final} \\
@@ -136,16 +136,15 @@ Since we want to calculate and understand how the indium will conform when bondi
 \caption{Maps of indium bump metrics.}
 \end{figure}
 
-% TODO Insert GDS of indium bump array
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{Main/Ch2/DC_DieBTest_V2.GDStex_output.pdf}
+    \includegraphics[width=0.6\textwidth]{Main/Ch2/DC_DieBTest_V2.GDStex_output.pdf}
     \caption{GDS file of electroplating sample. Green indicates the locations with indium electroplated. }
 \end{figure}
 
 
 % Specify [NUM] for wrapping # of lines b/w wrapfig and L
-\begin{wrapfigure}{L}{0.75\textwidth}
+\begin{figure}
     \centering
     \begin{tikzpicture}
         \def\Ar{1.5 } % Radius
@@ -182,7 +181,7 @@ Since we want to calculate and understand how the indium will conform when bondi
         \path[draw, -latex', <->](-\Ar-0.2, 0) -- node [text width=3.5cm,midway,above,align=center,rotate=90] { Plating Thickness \\ $3-8 \um$} (-\Ar-0.2,  -\Ah);
         \end{tikzpicture}
     \caption{Line drawing of the change in shape of indium shape (not to scale).}
-\end{wrapfigure}
+\end{figure}
 
 
 Based on a number of bonding experiments I determined that the average thickness of indium after bonding was around $0.65 \um$ a sample of the indium bump can be seen in figure \ref{fig:semIndium}
@@ -200,7 +199,7 @@ The raw data from which the average indium thickness is determined table \ref{ta
     \centering
     \renewcommand{\minval}{0.1}
     \renewcommand{\maxval}{3}
-    \begin{tabular}{| l | p{2.1cm} | p{2.2cm} | p{1.9cm} | p{1.9cm} | p{2.4cm}|}
+    \begin{tabular}{| l | p{2.1cm} | p{2.3cm} | p{1.9cm} | p{1.9cm} | p{2.4cm}|}
     \hline
     Bond ID  &  $\ch{In}$ Bond Avg. Diameter ($\um$)  &  $\ch{In}$ Bump Thickness ($\um$)  &  $\ch{In}$ Bump Width ($\um$)  &  $\ch{In}$ Bump Volume ($\um^3$)  &  Bond Estimated Thickness ($\um$)
     \\
@@ -239,12 +238,12 @@ This corresponds to what we see in \ref{eq:radius_indium}. Where the initial hei
 
 Knowing that the bond does spread will constrain the maximum density of \uleds \ for a given bump thickness.
 
-\begin{wrapfigure}{0.5\textwidth}
+\begin{wrapfigure}{R}{0.5\textwidth}
     \centering
-    \includegraphics[width=0.22\textwidth]{Main/Ch2/TL.png}
-    \includegraphics[width=0.22\textwidth]{Main/Ch2/TR.png} \\
-    \includegraphics[width=0.22\textwidth]{Main/Ch2/BL.png}
-    \includegraphics[width=0.22\textwidth]{Main/Ch2/BR.png}
+    \includegraphics[width=0.22\textwidth]{Main/Ch2/microscopeGoodSpread/TL.png}
+    \includegraphics[width=0.22\textwidth]{Main/Ch2/microscopeGoodSpread/TR.png} \\
+    \includegraphics[width=0.22\textwidth]{Main/Ch2/microscopeGoodSpread/BL.png}
+    \includegraphics[width=0.22\textwidth]{Main/Ch2/microscopeGoodSpread/BR.png}
     \caption{Microscope images of diebonded sample. The internal smaller circles seen are a diameter of $42 \um$ the larger circles are the indium spreading}
     \label{fig:microscopeIndium}
     % \vspace{0.5cm}
@@ -254,7 +253,7 @@ Knowing that the bond does spread will constrain the maximum density of \uleds \
 \label{sec:uniformBond}
 To validate that the bonding of the LEDs to the BP was uniform microscope images of the bonds were taken from the LED into the bond surface. As the LEDs for this phase of tests are largely transparent and mainly just dots of gold, it is very easy to see the spread of the indium bonds, this can be seen in the images in figure \ref{fig:microscopeIndium}
 
-The gimbal head that is used % Insert image of gimbalhead here?
+The gimbal head that is used has a structure like what is seen in figure \ref{fig:gimbal_head}
 allows for
 
 \begin{figure}
@@ -375,15 +374,46 @@ It can be seen from the thermal simulations that the time taken for the indium t
 \section{Conformation to Theory}
 In this section we wanted to ensure that there was uniform bonding across the area of the sample, this would arise from the bonding head providing relatively uniform bonding force over the sample area. From the microscope images in \ref{fig:microscopeIndium} we can see that the spread of the indium bumps is uniform over the area of the sample, this would be representative of the gimbal head providing relatively uniform pressure over the face of the sample.
 
-Conformed to theory when the bonding would spread according to the calculated volume.
+Furthermore, we can also see that the bonding would spread according to the calculated volume.
+To validate that the indium was spreading as expected, bumps were electroplated to achieve a width of $40 \um$. To achieve this we can use equation \ref{eq:radius_indium} where we conserve the volume of indium. We can assume that we can consistently generate indium bumps of width $h_{Initial} = 7\um$
 
-To validate that the indium was spreading as expected, bumps were electroplated to achieve a width of 40 um. 40 um was selected as a final diameter for the bonded indium. To achieve this, I used the previous equation where we conserved the volume of indium % TODO cite the equation
 
-SHOW CALCULATIONS HERE
+\begin{equation}\tag{B} \label{eq:initial_radius}
+    \begin{split}
+        \sqrt{\frac{h_{Initial}}{ 0.65 \um}} r_{Initial} &= r_{Final} \\
+        r_{Initial} &= \sqrt{\frac{h_{Initial}}{ 0.65 \um}}^{-1}r_{Final} \\
+        r_{Initial} &= \sqrt{\frac{7 \um}{ 0.65 \um}}^{-1} 40 \um \\
+        r_{Initial} &= 12 \um
+    \end{split}
+\end{equation}
 
-To estimate appropriately I assumed the final bonding thickness was near the median value of what was recorded earlier. The new GDS files for the altered indium bumps that should achieve a thickness of $40 \um$ look like the following...
+The new GDS files for the altered indium bumps that should achieve a thickness of $40 \um$ looks like figure \ref{fig:12um_bumps}.
 
-After proceeding with the bonding the new images look as follows in figure
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{Main/Ch2/DC_DieBTest_V212um_tex_output.pdf}
+    \caption{GDS file of electroplating sample with $12\um$ bumps. Green indicates the locations with indium electroplated. }
+    \label{fig:12um_bumps}
+\end{figure}
+
+After proceeding with the bonding the new images from the microscope look as follows in figure \ref{fig:12um_bumps}. The images look different as these samples were prepared for the following process in chapter \ref{sec:Ch3_elec}. However, the test for bonding performance is still relevant.
+
+
+\begin{figure}
+    \centering
+    \def\w{0.35\textwidth}
+    \begin{tabular}{cc}
+        \includegraphics[width=\w]{Main/Ch2/12um/TL.png} &
+        \includegraphics[width=\w]{Main/Ch2/12um/TR.png} \\
+        \multicolumn{2}{c}{\includegraphics[width=\w]{Main/Ch2/12um/M.png}} \\
+        \includegraphics[width=\w]{Main/Ch2/12um/BL.png} &
+        \includegraphics[width=\w]{Main/Ch2/12um/BR.png}
+    \end{tabular}
+    \caption{Microscope images of diebonded $12 \um$ bumps.}
+    \label{fig:12um_bumps}
+\end{figure}
+
 % insert image and reference to image
 
 
@@ -454,11 +484,9 @@ The Handbook of Wafer Bonding \cite{waferBondingHandbook} suggests that a typica
     \label{fig:bond_diagram}
 \end{figure}
 
-While this deviates from the preliminary theory this is in part due to the basic modelling of the indium bumps that are assumed to be perfect cylinders. It is clear from the images taken with the SEM that this is not the case and both over plating and under plating cause serious decision from expected results.
 
-While results seemed promising with the bonding the bonds from this series of experiments seemed to break quite easily. Many of the resulting bonds did not last long enough for the pick and place to remove the head and others failed to last long enough to be transported across the lab to the microscope for imaging of the bonds.
 
-To resolve these issues I explain in further depth in the following section.
+I explain in further detail in the following section how I approached how to resolve this issue.
 
 
 \section{Development of a Repeatable Process}
