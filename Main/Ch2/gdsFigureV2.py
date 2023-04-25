@@ -55,3 +55,13 @@ conv2.layer_drawcolor = colorscheme
 save_and_plot(converter=conv2,
               filename=str(Path(file_path.parent, str(file_path.name) + 'tex_output')))
 
+gds_12um = gdspy.GdsLibrary()
+gds_12um.add(gdsii.cell_dict['LED1'])
+gds_12um.add(gdsii.cell_dict['LED_MESA_100um'])
+conv3 = GDSLatexConverter(gds_12um)
+conv3.scale = 0.0025
+
+conv3.layer_drawopt = drawopt
+conv3.layer_drawcolor = colorscheme
+save_and_plot(converter=conv2,
+              filename=str(Path(file_path.parent, str(file_path.stem) + '12um_tex_output')))
