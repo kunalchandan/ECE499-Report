@@ -47,7 +47,7 @@ When indium is deposited on a substrate, it forms cylindrical columns that are c
 
 Since we want to calculate and understand how the indium will conform when bonding is done, a number of characterization measurements were conducted to understand how the indium will spread and expand over the sample surface. We know the volume of indium will not change when diebonding occurs, we can model the spread of indium as a flattening of a cylinder.
 
-\begin{equation}\tag{B} \label{eq:radius_indium}
+\begin{equation} \label{eq:radius_indium}
     \begin{split}
         V_{Cylinder Initial} &= V_{Cylinder Final} \\
         \pi \times r_{Initial}^2 \times h_{Initial} &= \pi \times r_{Final}^2 \times h_{Final} \\
@@ -228,7 +228,7 @@ From the images captured by the scope \ref{fig:microscopeIndium}, we can see tha
 This corresponds to what we see in \ref{eq:radius_indium}. Where the initial height of the indium growth from what we expect in \ref{fig:scatterplot} where the growth is estimated to be $4-5\um$ in thickness.
 
 
-\begin{equation}\tag{B} \label{eq:radius_indium}
+\begin{equation} \label{eq:radius_indium2}
     \begin{split}
         \sqrt{\frac{h_{Initial}}{ 0.65 \um}} 21 \um &= r_{Final} \um \\
         52.1 &\approx 50 \um
@@ -378,7 +378,7 @@ Furthermore, we can also see that the bonding would spread according to the calc
 To validate that the indium was spreading as expected, bumps were electroplated to achieve a width of $40 \um$. To achieve this we can use equation \ref{eq:radius_indium} where we conserve the volume of indium. We can assume that we can consistently generate indium bumps of width $h_{Initial} = 7\um$
 
 
-\begin{equation}\tag{B} \label{eq:initial_radius}
+\begin{equation} \label{eq:initial_radius}
     \begin{split}
         \sqrt{\frac{h_{Initial}}{ 0.65 \um}} r_{Initial} &= r_{Final} \\
         r_{Initial} &= \sqrt{\frac{h_{Initial}}{ 0.65 \um}}^{-1}r_{Final} \\
@@ -451,7 +451,7 @@ In the \ref{sec:bond_failures} I discuss the method by which the $\ch{AuIn2}$ bo
 
 This section will complete a small literature review as to how the bond between the LED and BP forms and why there is failure in the previous experiments.
 
-The Handbook of Wafer Bonding \cite{waferBondingHandbook} suggests that a typical $\ch{In-Au}$ bump consists of a $3\um$ thick indium layer and a $0.3\um$ thick gold layer. The diagram in \ref{fig:waferbondingdiagram} part (a) shows what a typical construction of a microbump looks like. While there are differences in the way we construct our bond which looks like \ref{fig:bond_diagram}
+The \emph{Handbook of Wafer Bonding} \cite{waferBondingHandbook} suggests that a typical $\ch{In-Au}$ bump consists of a $3\um$ thick indium layer and a $0.3\um$ thick gold layer. The diagram in \ref{fig:waferbondingdiagram} part (a) shows what a typical construction of a microbump looks like. While there are differences in the way we construct our bond which looks like \ref{fig:bond_diagram}. The resulting product should be relatively similar.
 
 \begin{figure}
     \definecolor{cadetgrey}{HTML}{91A3B0}
@@ -485,15 +485,76 @@ The Handbook of Wafer Bonding \cite{waferBondingHandbook} suggests that a typica
 \end{figure}
 
 
+As described in the handbook.
+\begin{quote}
+    In addition, the  $\ch{Au - In}$ microbump has a relatively low yield strength, and thus undergoes plastic deformation under a mechanical load, which can help relieve mechanical stresses induced in the bonded wafers. The problems of thermal fatigue and creep movement due to the plastic deformation in the  $\ch{Au - In}$ microbumps can be mitigated by the epoxy adhesive surrounding them.
 
+...
+
+    As the temperature increases above $156\dC$, the molten indium dissolves the $\ch{AuIn2}$ intermetallic layer to form a mixture of indium - rich liquid with $\ch{AuIn2}$ grains. This liquid reacts with the remaining gold layer to form more $\ch{AuIn2}$ as shown in Figure \ref{fig:waferbondingdiagram}(c). Consequently, the composition of $\ch{AuIn2}$ in the mixture increases. During cooling to room temperature, the solidification of the mixture starts below $156\dC$ to form indium - rich $\ch{Au - In}$ alloys.
+\end{quote}
+
+Thus, the tensile strength of the alloy is comparable to that of $\ch{In}$ which has a tensile strength of $1.6 \mpa$ \cite{indiumCorpConstants} and a shear strength of $6.1 \mpa$.
+
+Given that we have a bonded area of:
+
+
+\begin{equation} \label{eq:bonded_area}
+    \begin{split}
+        A_{Bonded} &\doteq (6\times 6) \pi r^2 \\
+        &= (6\times 6) \pi (20 \um)^2 \\
+        &= 45239 \umm = 0.04524 \mm^2
+    \end{split}
+\end{equation}
+
+The tensile strength is given by
+
+\begin{equation} \notag
+    \begin{split}
+        \sigma &= \frac{F_{tensile}}{A} \\
+        1.6 \mpa \times A_{Bonded} &= F_{tensile} \\
+        72.4 \unit{\milli\newton} &= F_{tensile}
+    \end{split}
+\end{equation}
+
+The calculated tensile strength is extremely low, and the sheer strength is on a similar order of magnitude ($F_{shear} = 276 \unit{\milli\newton}$). This tensile and shear strength is only one order of magnitude greater than the mass of the LED and BP which are $M = \rho_{Sapphire} \times V_{LED + BP} = 0.21 \unit{\gram} \rightarrow F_{g} = M g = 2.1 \unit{\milli\newton}$. Due to the inaccuracies of the diebonder we do not observe 100\% overlap of the active bonding area which significantly reduces our margins required for maintaining a bond, furthermore the diebonder vacuum system has easily ripped the LED off of a bonded LED and BP pair with sub-nominal vacuum pressure.
+
+Since the current setup fails very easily it requires a solution before we can proceed to the daisy-chain tests in the next chapter.
 I explain in further detail in the following section how I approached how to resolve this issue.
 
 
 \section{Development of a Repeatable Process}
 \label{sec:Ch2_repeatable}
 
-As previously described a number of bonds did not last long enough for the diebonder to remove the head from on top of the LEDs. While we expected the bonds to be mechanically insecure, we still expected them to handle careful transport for a few days to weeks while characterization could be done. Instead, we observed immediate failures that could have been as a result of a variety of reasons. Some of these reasons were described in the previous chapter. To avoid tautology the solutions discussed here were to improve the cleanliness of the handling of samples and to increase the area that would bond the LEDs to the bps
+As previously described a number of bonds did not last long enough for the diebonder to remove the head from on top of the LEDs. While we expected the bonds to be mechanically insecure, we still expected them to handle careful transport for a few days while characterization could be done. Instead, we observed immediate failures. These failures could have been as a result of a variety of reasons, some of these reasons were described in the previous chapter. To avoid tautology the solutions discussed here were to improve the cleanliness of the handling of samples and to increase the bonded area that would bond the LED to the BP.
+
+\subsection{Adding Anchors}
+
+I wanted to add anchors to significantly improve the tensile strength of the bond. To complete this, inactive areas of the LED sample had portions where the \uleds \ would not be placed where the $\ch{Cr}-\ch{Au}$ would not be etched away. Furthermore, on the BP those corresponding areas would have indium electroplated. The corresponding GDS file of the LED and BP look like \ref{fig:gds_bp_led_anchors}.
 
 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{Main/Ch2/DC_DieBTest_V5.GDStex_output.pdf}
+    \caption{GDS file of LED and BP. Anchors added in alignement marks and between active areas. }
+    \label{fig:gds_bp_led_anchors}
+\end{figure}
+
+
+The anchors in figure increase the bonding area by orders of magnitude while maintaining the functionality of the previous design.
+The new area is \ref{eq:new_area}.
+
+
+\begin{equation} \label{eq:new_area}
+    \begin{split}
+        A_{New} &\doteq \underbrace{(6\times 6) \pi r^2}_{\text{Area of bonds to LEDs}} \underbrace{((5\times 5) 260\um \times 40\um) + ((2\times 2 \times 4) 150\um \times 150 \um)}_{\text{Anchors}} \\
+        &= (6\times 6) \pi (20 \um)^2  + 620000 \umm \\
+        &= 665239 \umm = 0.6652 \mm^2
+    \end{split}
+\end{equation}
+
+As the new bonded area is well over 14 times greater ($ \frac{A_{New}}{A_{Old}} = 14.704$) the corresponding tensile and shear strength should also scale accordingly.
+As the purpose of this series of experiments is not to develop the strongest possible mechanical bonds between wafers, and the current solution was sufficient for our purposes. No further tests into the strength of bonds were conducted as the bonds held the samples together as seen in \ref{fig:anchored_samples}
 
 % Adding anchors
