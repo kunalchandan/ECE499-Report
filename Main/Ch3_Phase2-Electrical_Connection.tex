@@ -2,18 +2,59 @@
 \label{sec:Ch3_elec}
 
 \section{Process}
+In this section we would like to characterize the performance of the electrical connection of the LED to the BP of the process. Since an excellent electrical connection throughout the entire circuit and display is required to power the LEDs and transistors on the backplane it is important to understand the non-idealities that will be encountered in the sample.
+
+To characterize the electrical connection over the sample a daisy-chain test will be conducted \cite{daisychainTest}.
+
+A daisy-chain test for diebonding with indium to bond an LED to a backplane involves bonding a series of LED chips to the backplane sequentially. Each LED chip is bonded using indium diebonding, and the bonding quality and electrical performance of each LED is evaluated before proceeding to bond the next LED in the chain.
+
+The purpose of the daisy-chain test is to ensure that each LED is bonded correctly and functions properly before bonding the next one. This allows for early detection and correction of any bonding issues, and ensures that the final product is of high quality.
+
+We will be using the same GDS file (see figure \ref{fig:ch3_gds_bp_led_anchors}) as the one with the added anchors and using a micromanipulator to probe the pads seen on the outside of the GDS file.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.3\textwidth]{Main/Ch2/DC_DieBTest_V5.GDStex_output.pdf}
+    \caption{GDS file of bonded LED and BP. }
+    \label{fig:ch3_gds_bp_led_anchors}
+\end{figure}
+
 
 \section{Characterization of Electrical Connection}
-Conducting the daisychain test
+
+Going through the entire electroplating and diebonding process, I was able to begin the process of characterizing the electrical properties of the diebonds. As I was using the micromanipulator in E3-3177 there were certain limitations and intricacies to using the tool that were not relevant to the characterization, but I felt the need to mention.
+
+\begin{itemize}
+    \item The diebonded samples were significantly larger than the field of view of the microscope. This meant I had to translate the sample stage to move the test pads into view.
+    \item Some probes suffered from significant static friction and high damping ratio which meant that translation of those probes faced significant lag when being used.
+    \item One of the ocular lenses had a focal distance outside the z-axis range of the stage.
+    \item The ocular lenses also faced significant vignetting.
+    \item Some geared belt drives did not work.
+\end{itemize}
+
+While the previous issues did exist, there were no functional issues with the micromanipulator and the tool was absolutely functional for use in this situation.
 
 \section{Connection Issues}
+To complete the electrical characterization of the daisy-chain samples, the probes of the micromanipulator were attached to a Kiethley Source Measurement Unit (SMU). The SMU allows us to apply voltages and currents and measure voltages, currents, and resistances. Upon attempting to measure the resistance of the sample, at first an `overflow' or open-circuit was measured.
+
+To overcome this at first a small voltage below $1 \V$ and was gradually increased up-to $20 \V$ until a current was measured. Once this was the case the resistance over the pads were measured.
+
+
 did not connect at first,
+
+\section{Conformation to Theory}
+
+The results of the measurements were as follows from \ref{fig:daisychain_resistance_table}
+
+
+\input{Main/Ch3/schematic.tex}
+
+
+\section{Development of a Repeatable Process}
 
 % Keeping process temperature low
 adjusted process to not do hmds
-
-\section{Conformation to Theory}
-\section{Development of a Repeatable Process}
 
 
 \subsection{Improving cleanliness of process}
