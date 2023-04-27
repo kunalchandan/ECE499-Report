@@ -15,7 +15,7 @@ We will be using the same GDS file (see figure \ref{fig:ch3_gds_bp_led_anchors})
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.3\textwidth]{Main/Ch2/DC_DieBTest_V5.GDStex_output.pdf}
+    \includegraphics[width=0.4\textwidth]{Main/Ch2/DC_DieBTest_V5.GDStex_output.pdf}
     \caption{GDS file of bonded LED and BP. }
     \label{fig:ch3_gds_bp_led_anchors}
 \end{figure}
@@ -38,14 +38,68 @@ While the previous issues did exist, there were no functional issues with the mi
 \section{Connection Issues}
 To complete the electrical characterization of the daisy-chain samples, the probes of the micromanipulator were attached to a Kiethley Source Measurement Unit (SMU). The SMU allows us to apply voltages and currents and measure voltages, currents, and resistances. Upon attempting to measure the resistance of the sample, at first an `overflow' or open-circuit was measured.
 
-To overcome this at first a small voltage below $1 \V$ and was gradually increased up-to $20 \V$ until a current was measured. Once this was the case the resistance over the pads were measured.
+To overcome this at first a small voltage below $1 \V$ and was gradually increased up-to $20 \V$ until a current was measured. This procedure of applying a high voltage is likely similar to what is often seen in oxide breakdown of transistors \cite{oxide_breakdown} where an oxide layer is broken down and promotes the creation of a conductive material from the source to discharge point. However, it is still unclear as to why this surface oxide appears as indium should not have formed a surface oxide layer as according to \cite{indiumCorpSurfacePrep} an oxide layer of a maximum of $80-100 \unit{\angstrom}$ would form after $2-4\unit{\hour}$ this oxide layer should have been removed by the preceding plasma-cleaning step \cite{plasma_clean_oxide} and diebonding should have easily melted the indium forming a bond that would work.
 
-
-did not connect at first,
+Once connection issues were resolved the resistance over the pads were measured. While measuring, however, the resistances over the pads was constantly in flux ata rate of change of $\frac{1-4 \unit{\ohm}}{\unit{\minute}}$.
 
 \section{Conformation to Theory}
 
-The results of the measurements were as follows from \ref{fig:daisychain_resistance_table}
+The results of the measurements were as follows from \ref{tab:daisychain_resistance_table}.
+
+\begin{table}
+    \centering
+    \begin{subtable}[t]{0.3\textwidth}
+        \centering
+        \begin{tabular}{| l | l | c |}
+            \hline
+            Start & End & Resistance [$\Omega$] \\
+            \hline
+            \hline
+            $v_{i_1}$ & $v_{o_{1,1}}$ & $64$ \\
+            $v_{i_1}$ & $v_{o_{1,2}}$ & $44$ \\
+            $v_{i_1}$ & $v_{o_{1,3}}$ & $69$ \\
+            $v_{i_6}$ & $v_{o_{6,1}}$ & $54$ \\
+            $v_{i_6}$ & $v_{o_{6,2}}$ & $65$ \\
+            $v_{i_6}$ & $v_{o_{6,3}}$ & $56$ \\
+            \hline
+        \end{tabular}
+        \caption{Sample 1.}
+    \end{subtable}
+    ~
+    \begin{subtable}{0.3\textwidth}
+        \centering
+        \begin{tabular}[t]{| l | l | c |}
+            \hline
+            Start & End & Resistance [$\Omega$] \\
+            \hline
+            \hline
+            $v_{i_1}$ & $v_{o_{1,5}}$ & $\infty$ \\
+            $v_{i_2}$ & $v_{o_{2,5}}$ & $1,000,000$ \\
+            \hline
+        \end{tabular}
+        \caption{Sample 2. Sample damaged after improper use of micromanipulator.}
+    \end{subtable}
+    ~
+    \begin{subtable}[t]{0.3\textwidth}
+        \centering
+        \begin{tabular}{| l | l | c |}
+            \hline
+            Start & End & Resistance [$\Omega$] \\
+            \hline
+            \hline
+            $v_{i_1}$ & $v_{o_{1,5}}$ & $90$ \\
+            $v_{i_2}$ & $v_{o_{1,5}}$ & $95$ \\
+            $v_{i_3}$ & $v_{o_{1,5}}$ & $85$ \\
+            $v_{i_4}$ & $v_{o_{1,5}}$ & $80$ \\
+            $v_{i_5}$ & $v_{o_{1,5}}$ & $90$ \\
+            $v_{i_6}$ & $v_{o_{1,5}}$ & $71$ \\
+            \hline
+        \end{tabular}
+        \caption{Sample 3.}
+    \end{subtable}
+    \caption{Daisy-chain resistance measurements of samples}
+    \label{tab:daisychain_resistance_table}
+\end{table}
 
 
 \input{Main/Ch3/schematic.tex}
