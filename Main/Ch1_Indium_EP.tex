@@ -94,15 +94,16 @@ The function generator would allow for pulsed plating as recommended by the indi
 According to the Indium corporation docs, the recommended electroplating current density for plating is $10-100 \jufeet$ at $20 \jufeet$ we should observe plating growth at $1.5 \mmph$.
 Converting to SI units from ASME units we see that this yields a plating current of $ J_{Plating} \approx 0.11-1.1 \junits \rightarrow I_{Plating} = 2.907 \mA$. However, in this analysis we have only considered the active plating area of the sample, and we have failed to consider the plating area of the exposed alligator clip that holds the sample.
 
-The extra exposed area guarantees an incorrect characterization of the plating growth proportional to the exposed area for the indium bumps. We can show this simply from the following
+The extra exposed area guarantees an incorrect characterization of the plating growth proportional to the exposed area for the indium bumps. We can show this simply from equation \ref{eq:v_eq_ir}.
 
-\begin{equation}\tag{A}
+\begin{equation}
     \begin{split}
         V &\doteq I R \\
         I_{Plating} &\doteq J_{Plating} \times A_{Plating} \\
         R_{Total} &\doteq R_{Anode} + R_{Plating Solution} + R_{Cathode} + R_{Wires} \\
         V_{Plating} &\doteq \text{Variable to satisfy plating current}
     \end{split}
+    \label{eq:v_eq_ir}
 \end{equation}
 
 From the datasheets from Indium Corporation \cite{indiumCorpPlating} we see that the recommended plating current density.
