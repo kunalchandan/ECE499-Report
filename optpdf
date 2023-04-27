@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# optpdf file.pdf
+# ./optpdf file.pdf
 #   This script will attempt to optimize the given pdf
 
 file="$1"
