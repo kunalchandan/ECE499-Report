@@ -186,14 +186,14 @@ Since we want to calculate and understand how the indium will conform when bondi
 
 Based on a number of bonding experiments I determined that the average thickness of indium after bonding was around $0.65 \um$ a sample of the indium bump can be seen in figure \ref{fig:semIndium}
 
-\begin{wrapfigure}{R}{0.5\textwidth}
+\begin{figure}
     \centering
     \includegraphics[width=0.45\textwidth]{Main/Ch2/indium_bump_before_bond.png}
     \caption{SEM image of indium bump at an angle of $80^\circ$}
     \label{fig:semIndium}
-\end{wrapfigure}
+\end{figure}
 
-The raw data from which the average indium thickness is determined table \ref{table:thicknessMap}.
+The raw data from which the average indium thickness is determined table \ref{tab:thicknessMap}.
 
 \begin{table}
     \centering
@@ -238,7 +238,7 @@ This corresponds to what we see in \ref{eq:radius_indium}. Where the initial hei
 
 Knowing that the bond does spread will constrain the maximum density of \uleds \ for a given bump thickness.
 
-\begin{wrapfigure}{R}{0.5\textwidth}
+\begin{figure}
     \centering
     \includegraphics[width=0.22\textwidth]{Main/Ch2/microscopeGoodSpread/TL.png}
     \includegraphics[width=0.22\textwidth]{Main/Ch2/microscopeGoodSpread/TR.png} \\
@@ -247,7 +247,7 @@ Knowing that the bond does spread will constrain the maximum density of \uleds \
     \caption{Microscope images of diebonded sample. The internal smaller circles seen are a diameter of $42 \um$ the larger circles are the indium spreading}
     \label{fig:microscopeIndium}
     % \vspace{0.5cm}
-\end{wrapfigure}
+\end{figure}
 
 \section{Validation of Uniform Bonding}
 \label{sec:uniformBond}
@@ -360,7 +360,7 @@ Both of the other issues are quite possible as during the process the substrate 
 It can be seen from the thermal simulations that the time taken for the indium to reach temperature is well within $0.3 \unit{\second}$ whereas the bonding recipe calls for the sample to sit at $250 \dC$ for $5 \unit{\minute}$. This is well within 2 orders of magnitude of time for the sample to reach temperature, as such it would be safe to assume that heat/temperature or lack thereof is not the causal source of failure.
 
 
-\begin{wrapfigure}{L}{0.5\textwidth}
+\begin{figure}
     \centering
     \includegraphics[width=0.21\textwidth]{Main/Ch2/heat/001.png}
     \includegraphics[width=0.21\textwidth]{Main/Ch2/heat/002.png}
@@ -368,7 +368,7 @@ It can be seen from the thermal simulations that the time taken for the indium t
     \includegraphics[width=0.21\textwidth]{Main/Ch2/heat/020.png}
     \caption{Thermal simulation results. Temperature scale is ranged from $25 \dC$ to $250 \dC$}
     \label{fig:thermal_simulations}
-\end{wrapfigure}
+\end{figure}
 
 
 \section{Conformation to Theory}
@@ -387,17 +387,17 @@ To validate that the indium was spreading as expected, bumps were electroplated 
     \end{split}
 \end{equation}
 
-The new GDS files for the altered indium bumps that should achieve a thickness of $40 \um$ looks like figure \ref{fig:12um_bumps}.
+The new GDS files for the altered indium bumps that should achieve a thickness of $40 \um$ looks like figure \ref{fig:12um_bumps_gds}.
 
 
 \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth]{Main/Ch2/DC_DieBTest_V212um_tex_output.pdf}
     \caption{GDS file of electroplating sample with $12\um$ bumps. Green indicates the locations with indium electroplated. }
-    \label{fig:12um_bumps}
+    \label{fig:12um_bumps_gds}
 \end{figure}
 
-After proceeding with the bonding the new images from the microscope look as follows in figure \ref{fig:12um_bumps}. The images look different as these samples were prepared for the following process in chapter \ref{sec:Ch3_elec}. However, the test for bonding performance is still relevant.
+After proceeding with the bonding the new images from the microscope look as follows in figure \ref{fig:12um_bumps_microscope}. The images look different as these samples were prepared for the following process in chapter \ref{sec:Ch3_elec}. However, the test for bonding performance is still relevant.
 
 
 \begin{figure}
@@ -411,13 +411,13 @@ After proceeding with the bonding the new images from the microscope look as fol
         \includegraphics[width=\w]{Main/Ch2/12um/BR.png}
     \end{tabular}
     \caption{Microscope images of diebonded $12 \um$ bumps.}
-    \label{fig:12um_bumps}
+    \label{fig:12um_bumps_microscope}
 \end{figure}
 
 % insert image and reference to image
 
 
-As can be clearly seen in the images although there is some error in bonding spread, at this scale the placement accuracy limitations play a more significant role and constrain the critical dimension for the bond diameter. Furthermore, the bond size appears to conform to our expectations and reaches a size close to what was predicted.
+As can be clearly seen in the images that although there is some error in bonding spread, at this scale the placement accuracy limitations play a more significant role and constrain the critical dimension for the bond diameter. Furthermore, the bond size appears to conform to our expectations and reaches a size close to what was predicted.
 
 While the size of the bonds deviate from the preliminary theory this is in part due to the basic modelling of the indium bumps that are assumed to be perfect cylinders. It is clear from the images taken with the SEM that this is not the case and both over plating and under plating cause serious decision from expected results \ref{fig:overplating}.
 
@@ -530,14 +530,14 @@ As previously described a number of bonds did not last long enough for the diebo
 
 \subsection{Adding Anchors}
 
-I wanted to add anchors to significantly improve the tensile strength of the bond. To complete this, inactive areas of the LED sample had portions where the \uleds \ would not be placed where the $\ch{Cr}-\ch{Au}$ would not be etched away. Furthermore, on the BP those corresponding areas would have indium electroplated. The corresponding GDS file of the LED and BP look like \ref{fig:gds_bp_led_anchors}.
+I wanted to add anchors to significantly improve the tensile strength of the bond. To complete this, inactive areas of the LED sample had portions where \uleds \ would not be placed where the $\ch{Cr}-\ch{Au}$ would not be etched away. Furthermore, on the BP those corresponding areas would have indium electroplated. The corresponding GDS file of the LED and BP look like \ref{fig:gds_bp_led_anchors}.
 
 
 
 \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth]{Main/Ch2/DC_DieBTest_V5.GDStex_output.pdf}
-    \caption{GDS file of LED and BP. Anchors added in alignement marks and between active areas. }
+    \caption{GDS file of LED and BP. Anchors added in alignment marks and between active areas. }
     \label{fig:gds_bp_led_anchors}
 \end{figure}
 
@@ -555,7 +555,7 @@ The new area is \ref{eq:new_area}.
 \end{equation}
 
 As the new bonded area is well over 14 times greater ($ \frac{A_{New}}{A_{Old}} = 14.704$) the corresponding tensile and shear strength should also scale accordingly.
-As the purpose of this series of experiments is not to develop the strongest possible mechanical bonds between wafers, and the current solution was sufficient for our purposes. No further tests into the strength of bonds were conducted as the bonds held the samples together as seen in figure \ref{fig:anchored_samples}.
+As the purpose of this series of experiments is not to develop the strongest possible mechanical bonds between wafers, and the current solution was sufficient for our purposes. No further tests into the strength of bonds were conducted because the bonds held the samples together as seen in figure \ref{fig:anchored_samples}.
 
 
 \begin{figure}

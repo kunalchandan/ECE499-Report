@@ -25,56 +25,56 @@ The process used there allows us to electroplate indium onto the substrate that 
 
 In summary the process has us prepare the sample with acids before placing into the plating solution. Then the sample holder and sample are submerged in the plating solution and the current source is applied. However, due to cost constraints a voltage source was obtained to perform in place of a current source.
 
-\begin{wrapfigure}{L}{0.25\textwidth}
+\begin{figure}
     \centering
-    \includegraphics[width=0.25\textwidth, angle=90]{Main/Ch1/Aligator_clip.jpeg}
+    \includegraphics[width=0.45\textwidth, angle=90]{Main/Ch1/Aligator_clip.jpeg}
     \caption{Image of the flat mouth alligator clip used to clamp onto the sample}
-\end{wrapfigure}
+\end{figure}
 
 A current source would have been preferred over a voltage source due to several reasons. Since electroplating is a process where metal ions are deposited on a substrate through the use of an electric current. The amount of metal deposited is directly proportional to the amount of electric charge that flows through the system, which means that controlling the current is crucial for controlling the thickness and quality of the plated layer.
 
 With a current source, the current can be precisely controlled and maintained at a constant level, which results in consistent and uniform plating as a function of time. On the other hand, a voltage source may not provide a consistent current, as the resistance of the plating solution can vary due to factors such as temperature or impurities, leading to poor plating results.
 
 % TODO Crop this better
-\begin{wrapfigure}{R}{0.2\textwidth}
+\begin{figure}
     \centering
-    \includegraphics[width=0.2\textwidth]{Main/Ch1/Current Sample holder.png}
+    \includegraphics[width=0.4\textwidth]{Main/Ch1/Current Sample holder.png}
     \caption{Line drawing of the alligator clip and sample }
-\end{wrapfigure}
+\end{figure}
 
 Another advantage of using a current source is that it allows for better control over the plating process and reduces the risk of over-plating or under-plating. With a voltage source, the voltage applied to the system can cause the plating rate to fluctuate, which can result in uneven thickness or even damage to the substrate. In contrast, a current source ensures a constant and controlled deposition rate, which minimizes the risk of defects or damage to the substrate.
 
 Using a voltage source with an ammeter can be equivalent to a current source in certain situations. This is because the voltage applied to a circuit is directly proportional to the current flowing through it. By measuring the current in the circuit using an ammeter, the current can be controlled by adjusting the voltage. In this way, the voltage source with an ammeter can effectively act as a current source.
 
 
-\begin{wrapfigure}{L}{0.65\textwidth}
+\begin{figure}
     \centering
     % \includegraphics[width=0.35\textwidth]{Main/Ch1/Sample_holder.png}
-    \begin{subfigure}{0.35\textwidth}
+    \begin{subfigure}{0.55\textwidth}
         \centering
-        \includegraphics[height=3.2cm]{Main/Ch1/electroplating_setup.png}
+        \includegraphics[height=6cm]{Main/Ch1/electroplating_setup.png}
         \caption{3D render of sample holder.}
     \end{subfigure}
     ~
-    \begin{subfigure}{0.25\textwidth}
+    \begin{subfigure}{0.35\textwidth}
         \centering
-        \includegraphics[height=3.2cm]{Main/Ch1/electroplating_setup_picture.png}
+        \includegraphics[height=6cm]{Main/Ch1/electroplating_setup_picture.png}
         \caption{Picture of physical device.}
     \end{subfigure}
     \caption{Sample holder}
-\end{wrapfigure}
+\end{figure}
 
 The sample holder consists of two plastic blocks that are held together by two steel bars. Thumbscrews are used to lock the relative position of the plastic pieces in place while the assembly 'floats'  on the lip of the beaker the sample is submerged into. One of the two plastic pieces has a stopper that helps constrain the position of the assembly on the beaker while the other plastic piece holds the glass rod and alligator clip.
 
 The glass rod is attached to the plastic piece and has the alligator clip on it. The clip and corresponding cathode holder are wrapped in a PTFE sleeve that helps minimize stray electric fields and electroplating onto the cathode wire.
 
 
-\begin{wrapfigure}{R}{0.35\textwidth}
+\begin{figure}
     \centering
     \includegraphics[width=0.35\textwidth]{Main/Ch1/GDS_V1.png}
     \caption{GDS image of the layout. Indium is in green bumps have a diameter of 40 $\um$}
     \label{fig:gds_ch1}
-\end{wrapfigure}
+\end{figure}
 
 
 \section{Physical Problems with the setup}
@@ -156,7 +156,7 @@ However, when we apply a voltage of $2.4 \mA$ for 5 minutes the growth we see in
 
 From those results we can see that the estimate of area that we predicted we got $\frac{0.8}{25} \times 100\% = 3.2\%$ of the expected growth. While that is not explicitly a problem, the indium bumps and growth did not look very uniform or nearly thick enough compared to what would be needed in the proceeding steps.
 
-From here a number of more experiments were conducted and condensed results of the growth were compiled in the table \ref{table:platingGrowths}
+From here a number of more experiments were conducted and condensed results of the growth were compiled in the table \ref{tab:platingGrowths}
 
 
 \begin{table}
