@@ -15,6 +15,7 @@
 \newcommand{\uleds}{$\mu$LEDs}
 
 % Units
+\DeclareSIUnit\angstrom{\text {Å}}
 \newcommand{\umm}   {\unit[per-mode=fraction]{\mu\meter\squared}}
 \newcommand{\um}    {\unit[per-mode=fraction]{\micro\meter}}
 \newcommand{\nm}    {\unit[per-mode=fraction]{\nano\meter}}
@@ -122,3 +123,11 @@
             \cellcolor{#5!\tempa!#4!#6} #1
     }}
 }
+
+\makeatletter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{fancy}% original style: plain
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\makeatother

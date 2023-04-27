@@ -27,7 +27,11 @@
 \fancyfoot[R]{ \bf\thepage\ \rm }%
 \pagenumbering{gobble}
 
+\newpage
+\pagestyle{fancy}
+\pagenumbering{Roman}
 \include{Title/Abstract.tex}
+\newpage
 \include{Title/Acknowledgement.tex}
 
 \newpage
@@ -52,7 +56,7 @@
 
 \pagebreak
 \printbibliography
-\pagebreak
+\newpage
 \include{Appendix/Appendix.tex}
 
 \end{document}
