@@ -1,0 +1,96 @@
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=MATLAB,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\begin{lstlisting}
+%% Define geometry constants
+at = 1.1; % aligator clip thickness mm
+al = 5; % Length of the aligator clip that sticks out mm
+als3 = al*sqrt(3); % assuming aligator clip is at 30deg mm
+st = 0.5; % Sample thickness mm
+cld = 2; % How much the aligator clip is attached to the sample mm
+s_len = 10; % Length of sample mm
+
+scaling = 1/1000;
+
+%% Define geometries
+aligator_back_x = scaling*[0 0 0 at at at]; % mm
+aligator_back_y = scaling*[0 (als3) (als3+cld) (als3+cld) als3 0]; % mm
+
+aligator_front_x = scaling*[(at+st+al) (at+st+al+at) (at+st+at) (at+st+at) (at+st) (at+st)]; % mm
+aligator_front_y = scaling*[0 0 als3 (als3+cld) (als3+cld) als3]; % mm
+
+sample_x = scaling*[at (at+st) (at+st) at]; % mm
+sample_y = scaling*[als3 als3 (als3+s_len) (als3+s_len)]; % mm
+
+in_electrode_x = scaling*[(at+50) (at+52) (at+52) (at+50)];
+in_electrode_y = scaling*[-5 -5 (50-5) (50-5)];
+%% Draw in PDE solver
+pdepoly(aligator_back_x, aligator_back_y, 'Aligator_Back');
+pdepoly(aligator_front_x, aligator_front_y, 'Aligator_front');
+pdepoly(sample_x, sample_y, 'Sample');
+pdepoly(in_electrode_x, in_electrode_y, 'Electrode');
+pderect([-0.06 0.08 -0.04 0.08], "Conductive_Liquid");
+
+%% Generate PDE Plot
+% Export the geometry description matrix, set formula, and name-space matrix into the MATLAB workspace by selecting
+%%%%%%%% Draw > Export Geometry Description, Set Formula, Labels.
+% This data lets you reconstruct the geometry in the workspace.
+
+g = decsg(gd,sf,ns);
+
+%% Create E Model
+emagmodel = createpde("electromagnetic", "conduction");
+
+geometryFromEdges(emagmodel, g)
+%% Rest
+
+pdegplot(emagmodel,"EdgeLabels","on", "FaceLabels", "on")
+
+emagmodel.VacuumPermittivity = 8.8541878128E-12;
+electromagneticProperties(emagmodel, ...
+    "RelativePermittivity",1.00059, ...
+    "Conductivity", 1);
+%%
+electromagneticBC(emagmodel,"Voltage",1.1,"Edge",[6 7 19 20]);
+electromagneticBC(emagmodel,"Voltage",0.5,"Edge",[8 9 23 24]);
+electromagneticBC(emagmodel,"Voltage",0,"Edge",[1 2 3 4 5 10 11 12 13 14 15 16 17 18 21 22]);
+
+
+generateMesh(emagmodel);
+
+R = solve(emagmodel);
+
+pdeplot(emagmodel,"XYData",R.ElectricPotential, ...
+    "Contour","on", ...
+    "FlowData",[R.CurrentDensity.Jx,R.CurrentDensity.Jy])
+
+ali_back_poly = polyshape(aligator_back_x, aligator_back_y);
+ali_front_poly = polyshape(aligator_front_x, aligator_front_y);
+sample_poly = polyshape(sample_x, sample_y);
+in_poly = polyshape(in_electrode_x, in_electrode_y);
+
+hold on;
+plot(ali_back_poly);
+plot(ali_front_poly);
+plot(sample_poly);
+plot(in_poly);
+axis equal
+hold off;
+\end{lstlisting}

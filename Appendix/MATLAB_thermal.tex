@@ -35,15 +35,15 @@ SAPPHIRE_SPECIFIC_HEAT = 750; % J / kg * K
 
 AMBIENT_TEMPERATURE = 273.15 + 22; % K
 HOTPLATE_TEMPERATURE = 273.15 + 250; % K
-CONVECTION_COEFFICIENT_AIR = 5; % Unitless nominal 1-5 
+CONVECTION_COEFFICIENT_AIR = 5; % Unitless nominal 1-5
 % https://www.engineeringtoolbox.com/emissivity-coefficients-d_447.html
 EMISSIVITY_COEFFICIENT_SAPPHIRE = 0.8;
 
 %% Define 2D geometry
 pderect([(-BP_width/2) (BP_width/2) (-BP_length/2) (BP_length/2)], 'BP')
 pderect([(-LED_width/2) (LED_width/2) (-LED_length/2) (LED_length/2)], 'LED')
-%% Export the geometry description matrix, set formula, and name-space matrix into the MATLAB workspace by selecting 
-%%%%%%%% Draw > Export Geometry Description, Set Formula, Labels. 
+% Export the geometry description matrix, set formula, and name-space matrix into the MATLAB workspace by selecting
+%%%%%%%% Draw > Export Geometry Description, Set Formula, Labels.
 % This data lets you reconstruct the geometry in the workspace.
 
 
@@ -102,7 +102,6 @@ for i = 1:length(results.SolutionTimes)
   title({['Time = ' num2str(results.SolutionTimes(i)) 's']})
   saveas(f, [num2str(i, '%03.f') '.png']);
 end
-
 
 
 
