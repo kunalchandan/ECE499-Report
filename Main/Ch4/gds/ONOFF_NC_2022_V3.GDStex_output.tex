@@ -1,0 +1,418 @@
+\nonstopmode
+% !TeX encoding = UTF-8
+% Created with GDSLatexConverter% For more information, visit https://github.com/Aypac/GDSLatexConverter
+
+% Use lualatex to compile
+\RequirePackage{luatex85}
+\documentclass[border=0mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+
+
+% DEFINE PICS
+% LED_BP_Overlay
+\tikzset {LED_BP_Overlay_0_00507/.pic={
+    % polygons in this cell
+    
+    % references in this cell to other cells
+    \pic{LED_CHIP_10x10_0_003F1};
+    \pic{ONOFF_BP_CHIP_10x10_0_00585};
+    
+}}
+% LED_BP_Overlay
+\tikzset {LED_BP_Overlay_2_00507/.pic={
+    % polygons in this cell
+    
+    % references in this cell to other cells
+    \pic{LED_CHIP_10x10_2_003F1};
+    \pic{ONOFF_BP_CHIP_10x10_2_00585};
+    
+}}
+% LED_BP_Overlay
+\tikzset {LED_BP_Overlay_21_00507/.pic={
+    % polygons in this cell
+    
+    % references in this cell to other cells
+    \pic{LED_CHIP_10x10_21_003F1};
+    
+}}
+% LED_BP_Overlay
+\tikzset {LED_BP_Overlay_22_00507/.pic={
+    % polygons in this cell
+    
+    % references in this cell to other cells
+    \pic{LED_CHIP_10x10_22_003F1};
+    
+}}
+% LED_BP_Overlay
+\tikzset {LED_BP_Overlay_23_00507/.pic={
+    % polygons in this cell
+    
+    % references in this cell to other cells
+    \pic{LED_CHIP_10x10_23_003F1};
+    
+}}
+% LED_BP_Overlay
+\tikzset {LED_BP_Overlay_24_00507/.pic={
+    % polygons in this cell
+    
+    % references in this cell to other cells
+    \pic{LED_CHIP_10x10_24_003F1};
+    \pic{ONOFF_BP_CHIP_10x10_24_00585};
+    
+}}
+% LED_CHIP_10x10
+\tikzset {LED_CHIP_10x10_0_003F1/.pic={
+    % polygons in this cell
+    \path (-5.00000, 5.00000)--(-5.00000, -5.00000)--(5.00000, -5.00000)--(5.00000, 5.00000)--cycle {};
+    
+    % references in this cell to other cells
+    
+}}
+% LED_CHIP_10x10
+\tikzset {LED_CHIP_10x10_2_003F1/.pic={
+    % polygons in this cell
+    
+    % references in this cell to other cells
+    \begin{scope}[shift={(-3.375, -3.375)}]
+        \foreach \y in {0,...,1} {
+            \foreach \x in {0,...,1} {
+                \begin{scope}[shift={(\x*6.75, \y*6.75)}]
+                    \pic{Bonding_Alignment_Mark_2_0082B};
+                \end{scope}
+                
+            }
+            
+        }
+        
+    \end{scope}
+    
+}}
+% LED_CHIP_10x10
+\tikzset {LED_CHIP_10x10_21_003F1/.pic={
+    % polygons in this cell
+    \path (-5.00000, 1.75000)--(-4.81250, 2.49625)--(-4.81250, 4.81250)--(-2.49625, 4.81250)--(-1.75000, 5.00000)--(-2.49625, 5.18750)--(-5.18750, 5.18750)--(-5.18750, 2.49625)--cycle {};
+    \path (-5.18750, -5.18750)--(-2.49625, -5.18750)--(-1.75000, -5.00000)--(-2.49625, -4.81250)--(-4.81250, -4.81250)--(-4.81250, -2.49625)--(-5.00000, -1.75000)--(-5.18750, -2.49625)--cycle {};
+    \path (2.49625, -5.18750)--(5.18750, -5.18750)--(5.18750, -2.49625)--(5.00000, -1.75000)--(4.81250, -2.49625)--(4.81250, -4.81250)--(2.49625, -4.81250)--(1.75000, -5.00000)--cycle {};
+    \path (5.00000, 1.75000)--(5.18750, 2.49625)--(5.18750, 5.18750)--(2.49625, 5.18750)--(1.75000, 5.00000)--(2.49625, 4.81250)--(4.81250, 4.81250)--(4.81250, 2.49625)--cycle {};
+    
+    % references in this cell to other cells
+    \begin{scope}[shift={(-3.75, -2.0)}]
+        \foreach \y in {0,...,1} {
+            \foreach \x in {0,...,1} {
+                \begin{scope}[shift={(\x*7.5, \y*4.0)}]
+                    \pic{AM_21_0008E};
+                \end{scope}
+                
+            }
+            
+        }
+        
+    \end{scope}
+    \begin{scope}[shift={(-2.25, -2.25)}]
+        \foreach \y in {0,...,9} {
+            \foreach \x in {0,...,9} {
+                \begin{scope}[shift={(\x*0.5, \y*0.5)}]
+                    \pic{LED_MESA_100um_21_0042C};
+                \end{scope}
+                
+            }
+            
+        }
+        
+    \end{scope}
+    
+}}
+% LED_CHIP_10x10
+\tikzset {LED_CHIP_10x10_22_003F1/.pic={
+    % polygons in this cell
+    
+    % references in this cell to other cells
+    \begin{scope}[shift={(-2.25, -2.25)}]
+        \foreach \y in {0,...,9} {
+            \foreach \x in {0,...,9} {
+                \begin{scope}[shift={(\x*0.5, \y*0.5)}]
+                    \pic{LED_MESA_100um_22_0042C};
+                \end{scope}
+                
+            }
+            
+        }
+        
+    \end{scope}
+    
+}}
+% LED_CHIP_10x10
+\tikzset {LED_CHIP_10x10_23_003F1/.pic={
+    % polygons in this cell
+    
+    % references in this cell to other cells
+    \begin{scope}[shift={(-2.25, -2.25)}]
+        \foreach \y in {0,...,9} {
+            \foreach \x in {0,...,9} {
+                \begin{scope}[shift={(\x*0.5, \y*0.5)}]
+                    \pic{LED_MESA_100um_23_0042C};
+                \end{scope}
+                
+            }
+            
+        }
+        
+    \end{scope}
+    
+}}
+% LED_CHIP_10x10
+\tikzset {LED_CHIP_10x10_24_003F1/.pic={
+    % polygons in this cell
+    
+    % references in this cell to other cells
+    \begin{scope}[shift={(-3.375, -3.375)}]
+        \foreach \y in {0,...,1} {
+            \foreach \x in {0,...,1} {
+                \begin{scope}[shift={(\x*6.75, \y*6.75)}]
+                    \pic{Bonding_Alignment_Mark_24_0082B};
+                \end{scope}
+                
+            }
+            
+        }
+        
+    \end{scope}
+    
+}}
+% ONOFF_BP_CHIP_10x10
+\tikzset {ONOFF_BP_CHIP_10x10_0_00585/.pic={
+    % polygons in this cell
+    \path (-6.25000, 3.00000)--(-6.06250, 3.74625)--(-6.06250, 6.06250)--(-3.74625, 6.06250)--(-3.00000, 6.25000)--(-3.74625, 6.43750)--(-6.43750, 6.43750)--(-6.43750, 3.74625)--cycle {};
+    \path (-6.43750, -13.93750)--(-3.74625, -13.93750)--(-3.00000, -13.75000)--(-3.74625, -13.56250)--(-6.06250, -13.56250)--(-6.06250, -11.24625)--(-6.25000, -10.50000)--(-6.43750, -11.24625)--cycle {};
+    \path (3.74625, -13.93750)--(6.43750, -13.93750)--(6.43750, -11.24625)--(6.25000, -10.50000)--(6.06250, -11.24625)--(6.06250, -13.56250)--(3.74625, -13.56250)--(3.00000, -13.75000)--cycle {};
+    \path (6.25000, 3.00000)--(6.43750, 3.74625)--(6.43750, 6.43750)--(3.74625, 6.43750)--(3.00000, 6.25000)--(3.74625, 6.06250)--(6.06250, 6.06250)--(6.06250, 3.74625)--cycle {};
+    \path (-6.25000, 6.25000)--(-6.25000, -6.25000)--(6.25000, -6.25000)--(6.25000, 6.25000)--cycle {};
+    \path (-6.25000, 6.25000)--(-6.25000, -13.75000)--(6.25000, -13.75000)--(6.25000, 6.25000)--cycle {};
+    
+    % references in this cell to other cells
+    
+}}
+% ONOFF_BP_CHIP_10x10
+\tikzset {ONOFF_BP_CHIP_10x10_2_00585/.pic={
+    % polygons in this cell
+    \path (-2.87500, 2.52500)--(-2.87500, 2.43750)--(-2.68750, 2.43750)--(-2.43750, 2.68750)--(-2.43750, 2.87500)--(-2.55000, 2.87500)--cycle {};
+    \path (2.87500, 2.52500)--(2.55000, 2.87500)--(2.43750, 2.87500)--(2.43750, 2.68750)--(2.68750, 2.43750)--(2.87500, 2.43750)--cycle {};
+    
+    % references in this cell to other cells
+    \begin{scope}[shift={(-3.375, -3.375)}]
+        \foreach \y in {0,...,1} {
+            \foreach \x in {0,...,1} {
+                \begin{scope}[shift={(\x*6.75, \y*6.75)}]
+                    \pic{Bonding_Alignment_Mark_2_0082B};
+                \end{scope}
+                
+            }
+            
+        }
+        
+    \end{scope}
+    
+}}
+% ONOFF_BP_CHIP_10x10
+\tikzset {ONOFF_BP_CHIP_10x10_24_00585/.pic={
+    % polygons in this cell
+    
+    % references in this cell to other cells
+    \begin{scope}[shift={(-3.375, -3.375)}]
+        \foreach \y in {0,...,1} {
+            \foreach \x in {0,...,1} {
+                \begin{scope}[shift={(\x*6.75, \y*6.75)}]
+                    \pic{Bonding_Alignment_Mark_24_0082B};
+                \end{scope}
+                
+            }
+            
+        }
+        
+    \end{scope}
+    
+}}
+% AM
+\tikzset {AM_21_0008E/.pic={
+    % polygons in this cell
+    \path (0.22500, -0.11500)--(-0.17500, -0.11500)--(-0.17500, -0.16500)--(0.17500, -0.16500)--(0.17500, -0.51500)--(-0.17500, -0.51500)--(-0.17500, -0.11500)--(-0.22500, -0.11500)--(-0.22500, -0.56500)--(0.22500, -0.56500)--cycle {};
+    
+    % references in this cell to other cells
+    \begin{scope}[shift={(0.0, 0.26)}]
+        \pic{center_21_00281};
+    \end{scope}
+    \begin{scope}[shift={(-0.1575, 0.26)}, rotate=90.0, every node/.append style={transform shape}]
+        \pic{fullside_21_0037C};
+    \end{scope}
+    \begin{scope}[shift={(0.1575, 0.26)}, rotate=-90.0, every node/.append style={transform shape}]
+        \pic{fullside_21_0037C};
+    \end{scope}
+    \begin{scope}[shift={(-0.17500000000000002, 0.085)}]
+        \foreach \y in {0,...,1} {
+            \foreach \x in {0,...,1} {
+                \begin{scope}[shift={(\x*0.35000000000000003, \y*0.35000000000000003)}]
+                    \pic{corner_21_00289};
+                \end{scope}
+                
+            }
+            
+        }
+        
+    \end{scope}
+    \begin{scope}[shift={(0.0, 0.4175)}]
+        \pic{fullside_21_0037C};
+    \end{scope}
+    \begin{scope}[shift={(0.0, 0.10250000000000001)}, rotate=-180.0, every node/.append style={transform shape}]
+        \pic{fullside_21_0037C};
+    \end{scope}
+    \begin{scope}[shift={(0.0, -0.34)}]
+        \pic{center_21_00281};
+    \end{scope}
+    
+}}
+% Bonding Alignment Mark
+\tikzset {Bonding_Alignment_Mark_2_0082B/.pic={
+    % polygons in this cell
+    \path (0.25000, -0.62500)--(0.62500, -0.62500)--(0.62500, -0.25000)--(0.25000, -0.25000)--cycle {};
+    \path (-0.62500, -0.62500)--(-0.25000, -0.62500)--(-0.25000, -0.25000)--(-0.62500, -0.25000)--cycle {};
+    \path (0.25000, 0.25000)--(0.62500, 0.25000)--(0.62500, 0.62500)--(0.25000, 0.62500)--cycle {};
+    \path (-0.62500, 0.25000)--(-0.25000, 0.25000)--(-0.25000, 0.62500)--(-0.62500, 0.62500)--cycle {};
+    
+    % references in this cell to other cells
+    
+}}
+% Bonding Alignment Mark
+\tikzset {Bonding_Alignment_Mark_24_0082B/.pic={
+    % polygons in this cell
+    \path (-0.62500, -0.25000)--(0.62500, -0.25000)--(0.62500, 0.25000)--(-0.62500, 0.25000)--cycle {};
+    \path (-0.25000, -0.62500)--(0.25000, -0.62500)--(0.25000, 0.62500)--(-0.25000, 0.62500)--cycle {};
+    
+    % references in this cell to other cells
+    
+}}
+% LED_MESA_100um
+\tikzset {LED_MESA_100um_21_0042C/.pic={
+    % polygons in this cell
+    \path (-0.12500, -0.12500)--(0.12500, -0.12500)--(0.12500, 0.12500)--(-0.12500, 0.12500)--cycle {};
+    \path (-0.12500, -0.12500)--(0.00000, -0.12500)--(0.00000, 0.00000)--(-0.12500, 0.00000)--cycle {};
+    \path (0.00000, 0.00000)--(0.12500, 0.00000)--(0.12500, 0.12500)--(0.00000, 0.12500)--cycle {};
+    
+    % references in this cell to other cells
+    
+}}
+% LED_MESA_100um
+\tikzset {LED_MESA_100um_22_0042C/.pic={
+    % polygons in this cell
+    \path (-0.05000, -0.05000)--(0.05000, -0.05000)--(0.05000, 0.05000)--(-0.05000, 0.05000)--cycle {};
+    
+    % references in this cell to other cells
+    
+}}
+% LED_MESA_100um
+\tikzset {LED_MESA_100um_23_0042C/.pic={
+    % polygons in this cell
+    \path (-0.02500, 0.02500)--(-0.02500, -0.02500)--(0.02500, -0.02500)--(0.02500, 0.02500)--cycle {};
+    
+    % references in this cell to other cells
+    
+}}
+% center
+\tikzset {center_21_00281/.pic={
+    % polygons in this cell
+    \path (0.00875, 0.03375)--(-0.00875, 0.03375)--(-0.00875, 0.00875)--(-0.03375, 0.00875)--(-0.03375, -0.00875)--(-0.00875, -0.00875)--(-0.00875, -0.03375)--(0.00875, -0.03375)--(0.00875, -0.00875)--(0.03375, -0.00875)--(0.03375, 0.00875)--(0.00875, 0.00875)--cycle {};
+    
+    % references in this cell to other cells
+    
+}}
+% full$side
+\tikzset {fullside_21_0037C/.pic={
+    % polygons in this cell
+    
+    % references in this cell to other cells
+    \begin{scope}[shift={(-0.00625, -0.0575)}]
+        \pic{oneside_21_0030B};
+    \end{scope}
+    \begin{scope}[shift={(-0.02375, -0.10250000000000001)}]
+        \foreach \x in {0,...,1} {
+            \pic{oneside_21_0030B};
+            
+        }
+        
+    \end{scope}
+    
+}}
+% corner
+\tikzset {corner_21_00289/.pic={
+    % polygons in this cell
+    
+    % references in this cell to other cells
+    \begin{scope}[shift={(-0.11125, -0.11125)}]
+        \foreach \y in {0,...,6} {
+            \foreach \x in {0,...,6} {
+                \begin{scope}[shift={(\x*0.035, \y*0.035)}]
+                    \pic{cornerbit_21_003EC};
+                \end{scope}
+                
+            }
+            
+        }
+        
+    \end{scope}
+    
+}}
+% one$side
+\tikzset {oneside_21_0030B/.pic={
+    % polygons in this cell
+    
+    % references in this cell to other cells
+    \foreach \y in {0,...,2} {
+        \begin{scope}[shift={(, \y*0.09)}]
+            \pic{sidebit_21_00308};
+        \end{scope}
+        
+    }
+    
+    
+}}
+% corner$bit
+\tikzset {cornerbit_21_003EC/.pic={
+    % polygons in this cell
+    \path (-0.00250, 0.01500)--(-0.00250, -0.00250)--(0.01500, -0.00250)--(0.01500, 0.01500)--cycle {};
+    
+    % references in this cell to other cells
+    
+}}
+% side$bit
+\tikzset {sidebit_21_00308/.pic={
+    % polygons in this cell
+    \path (-0.00250, 0.02500)--(-0.00250, 0.00000)--(0.01500, 0.00000)--(0.01500, 0.02500)--cycle {};
+    
+    % references in this cell to other cells
+    
+}}
+
+% END: DEFINE PICS
+\begin{document}
+    \begin{tikzpicture}
+        \begin{scope}[every path/.append style={draw=yellow, line width=1, pattern=north west lines, pattern color=yellow!30}]
+            \pic{LED_BP_Overlay_0_00507};
+        \end{scope}
+        \begin{scope}[every path/.append style={draw=red, line width=1, pattern=north west lines, pattern color=red!30, }]
+            \pic{LED_BP_Overlay_2_00507};
+        \end{scope}
+        \begin{scope}[every path/.append style={draw=black!20, }]
+            \pic{LED_BP_Overlay_21_00507};
+        \end{scope}
+        \begin{scope}[every path/.append style={draw=black!20, }]
+            \pic{LED_BP_Overlay_22_00507};
+        \end{scope}
+        \begin{scope}[every path/.append style={draw=black!20, }]
+            \pic{LED_BP_Overlay_23_00507};
+        \end{scope}
+        \begin{scope}[every path/.append style={draw=black!20, }]
+            \pic{LED_BP_Overlay_24_00507};
+        \end{scope}
+        
+    \end{tikzpicture}
+\end{document}

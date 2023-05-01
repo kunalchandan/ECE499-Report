@@ -1,0 +1,101 @@
+\nonstopmode
+% !TeX encoding = UTF-8
+% Created with GDSLatexConverter% For more information, visit https://github.com/Aypac/GDSLatexConverter
+
+% Use lualatex to compile
+\RequirePackage{luatex85}
+\documentclass[border=0mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+
+
+% DEFINE PICS
+% ONOFF_BP_CHIP_10x10
+\tikzset {ONOFF_BP_CHIP_10x10_0_00585/.pic={
+    % polygons in this cell
+    \path (-6.25000, 3.00000)--(-6.06250, 3.74625)--(-6.06250, 6.06250)--(-3.74625, 6.06250)--(-3.00000, 6.25000)--(-3.74625, 6.43750)--(-6.43750, 6.43750)--(-6.43750, 3.74625)--cycle {};
+    \path (-6.43750, -13.93750)--(-3.74625, -13.93750)--(-3.00000, -13.75000)--(-3.74625, -13.56250)--(-6.06250, -13.56250)--(-6.06250, -11.24625)--(-6.25000, -10.50000)--(-6.43750, -11.24625)--cycle {};
+    \path (3.74625, -13.93750)--(6.43750, -13.93750)--(6.43750, -11.24625)--(6.25000, -10.50000)--(6.06250, -11.24625)--(6.06250, -13.56250)--(3.74625, -13.56250)--(3.00000, -13.75000)--cycle {};
+    \path (6.25000, 3.00000)--(6.43750, 3.74625)--(6.43750, 6.43750)--(3.74625, 6.43750)--(3.00000, 6.25000)--(3.74625, 6.06250)--(6.06250, 6.06250)--(6.06250, 3.74625)--cycle {};
+    \path (-6.25000, 6.25000)--(-6.25000, -6.25000)--(6.25000, -6.25000)--(6.25000, 6.25000)--cycle {};
+    \path (-6.25000, 6.25000)--(-6.25000, -13.75000)--(6.25000, -13.75000)--(6.25000, 6.25000)--cycle {};
+    
+    % references in this cell to other cells
+    
+}}
+% ONOFF_BP_CHIP_10x10
+\tikzset {ONOFF_BP_CHIP_10x10_2_00585/.pic={
+    % polygons in this cell
+    \path (-2.87500, 2.52500)--(-2.87500, 2.43750)--(-2.68750, 2.43750)--(-2.43750, 2.68750)--(-2.43750, 2.87500)--(-2.55000, 2.87500)--cycle {};
+    \path (2.87500, 2.52500)--(2.55000, 2.87500)--(2.43750, 2.87500)--(2.43750, 2.68750)--(2.68750, 2.43750)--(2.87500, 2.43750)--cycle {};
+    
+    % references in this cell to other cells
+    \begin{scope}[shift={(-3.375, -3.375)}]
+        \foreach \y in {0,...,1} {
+            \foreach \x in {0,...,1} {
+                \begin{scope}[shift={(\x*6.75, \y*6.75)}]
+                    \pic{Bonding_Alignment_Mark_2_0082B};
+                \end{scope}
+                
+            }
+            
+        }
+        
+    \end{scope}
+    
+}}
+% ONOFF_BP_CHIP_10x10
+\tikzset {ONOFF_BP_CHIP_10x10_24_00585/.pic={
+    % polygons in this cell
+    
+    % references in this cell to other cells
+    \begin{scope}[shift={(-3.375, -3.375)}]
+        \foreach \y in {0,...,1} {
+            \foreach \x in {0,...,1} {
+                \begin{scope}[shift={(\x*6.75, \y*6.75)}]
+                    \pic{Bonding_Alignment_Mark_24_0082B};
+                \end{scope}
+                
+            }
+            
+        }
+        
+    \end{scope}
+    
+}}
+% Bonding Alignment Mark
+\tikzset {Bonding_Alignment_Mark_2_0082B/.pic={
+    % polygons in this cell
+    \path (0.25000, -0.62500)--(0.62500, -0.62500)--(0.62500, -0.25000)--(0.25000, -0.25000)--cycle {};
+    \path (-0.62500, -0.62500)--(-0.25000, -0.62500)--(-0.25000, -0.25000)--(-0.62500, -0.25000)--cycle {};
+    \path (0.25000, 0.25000)--(0.62500, 0.25000)--(0.62500, 0.62500)--(0.25000, 0.62500)--cycle {};
+    \path (-0.62500, 0.25000)--(-0.25000, 0.25000)--(-0.25000, 0.62500)--(-0.62500, 0.62500)--cycle {};
+    
+    % references in this cell to other cells
+    
+}}
+% Bonding Alignment Mark
+\tikzset {Bonding_Alignment_Mark_24_0082B/.pic={
+    % polygons in this cell
+    \path (-0.62500, -0.25000)--(0.62500, -0.25000)--(0.62500, 0.25000)--(-0.62500, 0.25000)--cycle {};
+    \path (-0.25000, -0.62500)--(0.25000, -0.62500)--(0.25000, 0.62500)--(-0.25000, 0.62500)--cycle {};
+    
+    % references in this cell to other cells
+    
+}}
+
+% END: DEFINE PICS
+\begin{document}
+    \begin{tikzpicture}
+        \begin{scope}[every path/.append style={draw=yellow, line width=1, pattern=north west lines, pattern color=yellow!30}]
+            \pic{ONOFF_BP_CHIP_10x10_0_00585};
+        \end{scope}
+        \begin{scope}[every path/.append style={draw=green, line width=1, pattern=north west lines, pattern color=green!15}]
+            \pic{ONOFF_BP_CHIP_10x10_2_00585};
+        \end{scope}
+        \begin{scope}[every path/.append style={draw=blue, pattern=north east lines, pattern color=blue!10,}]
+            \pic{ONOFF_BP_CHIP_10x10_24_00585};
+        \end{scope}
+        
+    \end{tikzpicture}
+\end{document}
