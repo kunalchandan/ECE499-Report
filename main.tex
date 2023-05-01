@@ -1,4 +1,9 @@
 % !TeX root = main.tex
+% \includeonly{Main/Ch1_Indium_EP.tex}
+% \includeonly{Main/areaCh2_Phase1-Uniform_Bonding.tex}
+% \includeonly{Main/Ch3_Phase2-Electrical_Connection.tex}
+% \includeonly{Main/Ch4_Phase3-Bonding_to_LEDs.tex}
+% \documentclass[draft]{report}
 \documentclass{report}
 
 \input{Includes.tex}
@@ -6,7 +11,8 @@
 
 
 %%%%%%%%%%%%   Header and Footer  %%%%%%%%%%%%%
-\pagestyle{fancy}
+% \pagestyle{fancy}
+\pagestyle{plain}
 \fancypagestyle{plain}{%
   \renewcommand{\headrulewidth}{0pt}%
   \fancyhf{}%
@@ -25,7 +31,7 @@
 \fancyhead[L]{Kunal Chandan}
 \fancyhead[R]{}
 \fancyfoot[R]{ \bf\thepage\ \rm }%
-\pagenumbering{gobble}
+% \pagenumbering{gobble}
 
 \newpage
 \pagestyle{fancy}
@@ -51,8 +57,8 @@
 \include{Main/Ch3_Phase2-Electrical_Connection.tex}
 \newpage
 \include{Main/Ch4_Phase3-Bonding_to_LEDs.tex}
-\newpage
-\include{Addendum/Addendum.tex}
+% \newpage
+% \include{Addendum/Addendum.tex}
 
 \pagebreak
 \printbibliography
